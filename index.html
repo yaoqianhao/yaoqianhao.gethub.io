@@ -151,6 +151,80 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-poj2528" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/24/poj2528/">poj2528</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/24/poj2528/" class="archive-article-date">
+  	<time datetime="2017-06-24T09:22:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><font color="gray" size="6">Mayor’s posters</font><br>The citizens of Bytetown, AB, could not stand that the candidates in the mayoral election campaign have been placing their electoral posters at all places at their whim. The city council has finally decided to build an electoral wall for placing the posters and introduce the following rules:<br>Every candidate can place exactly one poster on the wall.<br>All posters are of the same height equal to the height of the wall; the width of a poster can be any integer number of bytes (byte is the unit of length in Bytetown).<br>The wall is divided into segments and the width of each segment is one byte.<br>Each poster must completely cover a contiguous number of wall segments.</p>
+<p>They have built a wall 10000000 bytes long (such that there is enough place for all candidates). When the electoral campaign was restarted, the candidates were placing their posters on the wall and their posters differed widely in width. Moreover, the candidates started placing their posters on wall segments already occupied by other posters. Everyone in Bytetown was curious whose posters will be visible (entirely or in part) on the last day before elections.<br>Your task is to find the number of visible posters when all the posters are placed given the information about posters’ size, their place and order of placement on the electoral wall.<br>Input<br>The first line of input contains a number c giving the number of cases that follow. The first line of data for a single case contains number 1 &lt;= n &lt;= 10000. The subsequent n lines describe the posters in the order in which they were placed. The i-th line among the n lines contains two integer numbers l i and ri which are the number of the wall segment occupied by the left end and the right end of the i-th poster, respectively. We know that for each 1 &lt;= i &lt;= n, 1 &lt;= l i &lt;= ri &lt;= 10000000. After the i-th poster is placed, it entirely covers all wall segments numbered l i, l i+1 ,… , ri.<br>Output<br>For each input data set print the number of visible posters after all the posters are placed. </p>
+<p>The picture below illustrates the case of the sample input.<br><img src="/2017/06/24/poj2528/1.jpg" alt="1"><br>Sample Input<br>1<br>5<br>1 4<br>2 6<br>8 10<br>3 4<br>7 10<br>Sample Output<br>4</p>
+<p>题意很简单，在一面墙上贴纸，求最后露出来的纸的种类数<br>这题需要离散化，因为最多10000次贴纸，所以最多有20000个端点，那么进行一次离散化，所以线段树的数组最大只需要开20000×4就可以了<br>离散化之后就是很普通一道题了<br>wa了一次，对于（1，4），（1，2），（3，4）这样的情况没有把（1，4）两端给处理掉<br>所以成段更新的时候没往下走一层上面那层的要擦掉</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">data</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> l,r,val;</div><div class="line">    <span class="keyword">bool</span> lazy;</div><div class="line">&#125;;</div><div class="line">data tree[<span class="number">80009</span>];</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">p</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> pre,pos,f;</div><div class="line">&#125;;</div><div class="line">p pp[<span class="number">20005</span>];</div><div class="line"><span class="keyword">int</span> cnt,ans;</div><div class="line"><span class="keyword">int</span> <span class="built_in">map</span>[<span class="number">10005</span>][<span class="number">2</span>];</div><div class="line"><span class="keyword">bool</span> vis[<span class="number">10005</span>];</div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(p a,p b)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">return</span> a.pos&lt;b.pos;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> x)</span></span></div><div class="line">&#123;</div><div class="line">    tree[x].l=l;</div><div class="line">    tree[x].r=r;</div><div class="line">    tree[x].val=<span class="number">0</span>;</div><div class="line">    tree[x].lazy=<span class="number">0</span>;</div><div class="line">    <span class="keyword">if</span>(l==r)</div><div class="line">    &#123;</div><div class="line">        tree[x].val=<span class="number">0</span>;</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">int</span> mid=(l+r)/<span class="number">2</span>;</div><div class="line">    build(l,mid,x&lt;&lt;<span class="number">1</span>);</div><div class="line">    build(mid+<span class="number">1</span>,r,x&lt;&lt;<span class="number">1</span>|<span class="number">1</span>);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">pushdown</span><span class="params">(<span class="keyword">int</span> x)</span></span></div><div class="line">&#123;</div><div class="line">    tree[x].lazy=<span class="number">0</span>;</div><div class="line">    tree[x&lt;&lt;<span class="number">1</span>].val=tree[x].val;</div><div class="line">    tree[x&lt;&lt;<span class="number">1</span>].lazy=<span class="number">1</span>;</div><div class="line">    tree[x&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].val=tree[x].val;</div><div class="line">    tree[x&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].lazy=<span class="number">1</span>;</div><div class="line"></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> x,<span class="keyword">int</span> val)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span>(l&lt;=tree[x].l&amp;&amp;tree[x].r&lt;=r)</div><div class="line">    &#123;</div><div class="line">        tree[x].lazy=<span class="number">1</span>;</div><div class="line">        tree[x].val=val;</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(tree[x].lazy)</div><div class="line">    &#123;</div><div class="line">        pushdown(x);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">int</span> mid=(tree[x].l+tree[x].r)/<span class="number">2</span>;</div><div class="line">    <span class="keyword">if</span>(r&lt;=mid)</div><div class="line">    &#123;</div><div class="line">        update(l,r,x&lt;&lt;<span class="number">1</span>,val);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(l&gt;mid)</div><div class="line">    &#123;</div><div class="line">        update(l,r,x&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,val);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span></div><div class="line">    &#123;</div><div class="line">        update(l,r,x&lt;&lt;<span class="number">1</span>,val);</div><div class="line">        update(l,r,x&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,val);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">getans</span><span class="params">(<span class="keyword">int</span> x)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span>(tree[x].lazy&amp;&amp;vis[tree[x].val]==<span class="number">0</span>)</div><div class="line">    &#123;</div><div class="line">            <span class="comment">//cout&lt;&lt;tree[x].val&lt;&lt;" "&lt;&lt;tree[x].l&lt;&lt;" "&lt;&lt;tree[x].r&lt;&lt;endl;</span></div><div class="line">            vis[tree[x].val]=<span class="number">1</span>;</div><div class="line">            ans++;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(tree[x].lazy||(tree[x].l==tree[x].r))</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    getans(x&lt;&lt;<span class="number">1</span>);</div><div class="line">    getans(x&lt;&lt;<span class="number">1</span>|<span class="number">1</span>);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</div><div class="line">    <span class="keyword">int</span> t;</div><div class="line">    <span class="built_in">cin</span>&gt;&gt;t;</div><div class="line">    <span class="keyword">while</span>(t--)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">int</span> n;</div><div class="line">        <span class="built_in">cin</span>&gt;&gt;n;</div><div class="line">        cnt=<span class="number">0</span>;</div><div class="line">        ans=<span class="number">0</span>;</div><div class="line">        <span class="built_in">memset</span>(vis,<span class="number">0</span>,<span class="keyword">sizeof</span>(vis));</div><div class="line">        vis[<span class="number">0</span>]=<span class="number">1</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">int</span> tl,tr;</div><div class="line">            <span class="built_in">cin</span>&gt;&gt;tl&gt;&gt;tr;</div><div class="line">            pp[cnt].pre=i;</div><div class="line">            pp[cnt].f=<span class="number">0</span>;</div><div class="line">            pp[cnt++].pos=tl;</div><div class="line">            pp[cnt].pre=i;</div><div class="line">            pp[cnt].f=<span class="number">1</span>;</div><div class="line">            pp[cnt++].pos=tr;</div><div class="line">        &#125;</div><div class="line">        sort(pp,pp+cnt,cmp);</div><div class="line">        <span class="keyword">int</span> x=pp[<span class="number">0</span>].pos;</div><div class="line">        <span class="keyword">int</span> tmp=<span class="number">1</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;cnt;i++)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span>(x==pp[i].pos)</div><div class="line">                pp[i].pos=tmp;</div><div class="line">            <span class="keyword">else</span></div><div class="line">            &#123;</div><div class="line">                x=pp[i].pos;</div><div class="line">                pp[i].pos=++tmp;</div><div class="line">            &#125;</div><div class="line">            <span class="built_in">map</span>[pp[i].pre][pp[i].f]=pp[i].pos;</div><div class="line">        &#125;</div><div class="line">        build(<span class="number">1</span>,tmp,<span class="number">1</span>);</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</div><div class="line">        &#123;</div><div class="line">           <span class="comment">// cout&lt;&lt;map[i][0]&lt;&lt;" "&lt;&lt;map[i][1]&lt;&lt;endl;</span></div><div class="line">            update(<span class="built_in">map</span>[i][<span class="number">0</span>],<span class="built_in">map</span>[i][<span class="number">1</span>],<span class="number">1</span>,i);</div><div class="line">        &#125;</div><div class="line">        getans(<span class="number">1</span>);</div><div class="line">        <span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">acm</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">队训day6</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">线段树</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">离散化</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/24/poj2528/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-gethub博客建立的说明" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -826,76 +900,6 @@
 
 
   
-    <article id="post-poj1321" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/21/poj1321/">poj1321</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/21/poj1321/" class="archive-article-date">
-  	<time datetime="2017-06-21T13:37:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><font color="gray" size="6">棋盘问题</font><br>在一个给定形状的棋盘（形状可能是不规则的）上面摆放棋子，棋子没有区别。要求摆放时任意的两个棋子不能放在棋盘中的同一行或者同一列，请编程求解对于给定形状和大小的棋盘，摆放k个棋子的所有可行的摆放方案C。<br>Input<br>输入含有多组测试数据。<br>每组数据的第一行是两个正整数，n k，用一个空格隔开，表示了将在一个n*n的矩阵内描述棋盘，以及摆放棋子的数目。 n &lt;= 8 , k &lt;= n<br>当为-1 -1时表示输入结束。<br>随后的n行描述了棋盘的形状：每行有n个字符，其中 # 表示棋盘区域， . 表示空白区域（数据保证不出现多余的空白行或者空白列）。<br>Output<br>对于每一组数据，给出一行输出，输出摆放的方案数目C （数据保证C&lt;2^31）。<br>Sample Input<br>2 1</p>
-<p>#.<br>.#<br>4 4<br>…#<br>..#.<br>.#..</p>
-<p>#…<br>-1 -1<br>Sample Output<br>2<br>1</p>
-<p>#号处可以放棋子，思路就是dfs搜索行，用一个数组记录列是否已经放了棋子</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">char</span> <span class="built_in">map</span>[<span class="number">10</span>][<span class="number">10</span>];</div><div class="line"><span class="keyword">int</span> cnt,n,k;</div><div class="line"><span class="keyword">bool</span> vused[<span class="number">10</span>];</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> r,<span class="keyword">int</span> now)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span>(n-r&lt;k-now) <span class="keyword">return</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span>(<span class="built_in">map</span>[r][i]==<span class="string">'#'</span>&amp;&amp;vused[i]==<span class="number">0</span>)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span>(now+<span class="number">1</span>==k)</div><div class="line">            &#123;</div><div class="line">                cnt++;</div><div class="line">                <span class="keyword">continue</span>;</div><div class="line">            &#125;</div><div class="line">            vused[i]=<span class="number">1</span>;</div><div class="line">            dfs(r+<span class="number">1</span>,now+<span class="number">1</span>);</div><div class="line">            vused[i]=<span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    dfs(r+<span class="number">1</span>,now);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</div><div class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;k&amp;&amp;n!=<span class="number">-1</span>)</div><div class="line">    &#123;</div><div class="line">        cnt=<span class="number">0</span>;</div><div class="line">        <span class="built_in">memset</span>(vused,<span class="number">0</span>,<span class="keyword">sizeof</span>(vused));</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;n;j++)</div><div class="line">               <span class="built_in">cin</span>&gt;&gt;<span class="built_in">map</span>[i][j];</div><div class="line">        dfs(<span class="number">0</span>,<span class="number">0</span>);</div><div class="line">        <span class="built_in">cout</span>&lt;&lt;cnt&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">acm</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">队训day1</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">dfs</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/21/poj1321/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -992,7 +996,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">一些感想</a>
+                <a href="javascript:void(0)" class="js-tag color4">acm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">队训day1</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">dfs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1012,18 +1024,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">acm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">队训day1</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">dfs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">bfs</a>
               </li>
              
@@ -1033,6 +1033,14 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">线段树</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">离散化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">一些感想</a>
               </li>
             
             <div class="clearfix"></div>
