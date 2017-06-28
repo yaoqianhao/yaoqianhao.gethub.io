@@ -151,6 +151,84 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-codeforces-85D" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/24/codeforces-85D/">codeforces 85D</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/24/codeforces-85D/" class="archive-article-date">
+  	<time datetime="2017-06-24T13:38:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><font color="gray" size="6">Sum of Medians</font><br>In one well-known algorithm of finding the k-th order statistics we should divide all elements into groups of five consecutive elements and find the median of each five. A median is called the middle element of a sorted array (it’s the third largest element for a group of five). To increase the algorithm’s performance speed on a modern video card, you should be able to find a sum of medians in each five of the array.</p>
+<p>A sum of medians of a sorted k-element set S ={ a1, a2, …, ak}, where a1 &lt; a2 &lt; a3 &lt; … &lt; ak, will be understood by as<br>                                      <img src="/2017/06/24/codeforces-85D/1.jpg" alt="1"><br>The  operator stands for taking the remainder, that is  stands for the remainder of dividing x by y.</p>
+<p>To organize exercise testing quickly calculating the sum of medians for a changing set was needed.</p>
+<p>Input<br>The first line contains number n (1 ≤ n ≤ 105), the number of operations performed.</p>
+<p>Then each of n lines contains the description of one of the three operations:</p>
+<p>add x — add the element x to the set;<br>del x — delete the element x from the set;<br>sum — find the sum of medians of the set.<br>For any add x operation it is true that the element x is not included in the set directly before the operation.</p>
+<p>For any del x operation it is true that the element x is included in the set directly before the operation.</p>
+<p>All the numbers in the input are positive integers, not exceeding 109.</p>
+<p>Output<br>For each operation sum print on the single line the sum of medians of the current set. If the set is empty, print 0.</p>
+<p>Please, do not use the %lld specificator to read or write 64-bit integers in C++. It is preferred to use the cin, cout streams (also you may use the %I64d specificator).</p>
+<p>Example<br>Input<br>6<br>add 4<br>add 5<br>add 1<br>add 2<br>add 3<br>sum<br>Output<br>3<br>Input<br>14<br>add 1<br>add 7<br>add 2<br>add 5<br>sum<br>add 6<br>add 8<br>add 9<br>add 3<br>add 4<br>add 10<br>sum<br>del 1<br>sum<br>Output<br>5<br>11<br>13</p>
+<p>题意：在一个升序的序列中，add为插入数，del为减去数，sum为求所有位置为3的倍数的数之和<br>所有数不重复<br>思路是先把所有操作读一遍，对其中出现的所有数进行去重排序，得到每个数的rank以及总个数N<br>则线段树的范围为1～N<br>线段树来维护第L~R个rank之间，序列中数的个数以及<font color="red">在L~R中位置依次为1～5的倍数的数之和sum[i]</font><br>注意红字部分，即对于一个节点范围为L~R，L的位置为1，L+1的位置为2这样子。。<br>这样子就非常巧妙的做到了删数加数的操作了<br>在往父亲节点合并的时候，左儿子的sum[i]直接加到父亲的sum[i],而右儿子的sum[i]需要加到父亲的sum[(i+lcnt)%5]，其中lcnt为左儿子中数的个数<br>注意一个rank为k的数在线段树中的节点的l，r必然也为k 这是这个线段树的重要特点</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">data</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> cnt;</div><div class="line">    <span class="keyword">long</span> <span class="keyword">long</span> sum[<span class="number">5</span>];</div><div class="line">&#125;;</div><div class="line">data tree[<span class="number">400005</span>];</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">caozuo</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> f,val;</div><div class="line">&#125;;</div><div class="line">caozuo p[<span class="number">100005</span>];</div><div class="line"><span class="keyword">int</span> num[<span class="number">100005</span>],cnt;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="built_in">memset</span>(tree,<span class="number">0</span>,<span class="keyword">sizeof</span>(tree));</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">getrank</span><span class="params">(<span class="keyword">int</span> x)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> l=<span class="number">0</span>,r=cnt<span class="number">-1</span>;</div><div class="line">    <span class="keyword">while</span>(l&lt;=r)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">int</span> mid=(l+r)/<span class="number">2</span>;</div><div class="line">        <span class="keyword">if</span>(x==num[mid]) <span class="keyword">return</span> mid+<span class="number">1</span>;</div><div class="line">        <span class="keyword">if</span>(x&lt;num[mid])</div><div class="line">            r=mid<span class="number">-1</span>;</div><div class="line">        <span class="keyword">else</span> l=mid+<span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">pushup</span><span class="params">(<span class="keyword">int</span> x)</span></span></div><div class="line">&#123;</div><div class="line">    tree[x].cnt=tree[x&lt;&lt;<span class="number">1</span>].cnt+tree[x&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].cnt;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)</div><div class="line">        tree[x].sum[i]=tree[x&lt;&lt;<span class="number">1</span>].sum[i];</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)</div><div class="line">    &#123;</div><div class="line">        tree[x].sum[(i+tree[x&lt;&lt;<span class="number">1</span>].cnt)%<span class="number">5</span>]+=tree[x&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].sum[i];</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> rk,<span class="keyword">int</span> f,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> x)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span>(l==r)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span>(f)</div><div class="line">        &#123;</div><div class="line">            <span class="built_in">memset</span>(tree[x].sum,<span class="number">0</span>,<span class="keyword">sizeof</span>(tree[x].sum));</div><div class="line">            tree[x].sum[<span class="number">1</span>]=num[rk<span class="number">-1</span>];</div><div class="line">            tree[x].cnt=<span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span></div><div class="line">        &#123;</div><div class="line">            <span class="built_in">memset</span>(tree[x].sum,<span class="number">0</span>,<span class="keyword">sizeof</span>(tree[x].sum));</div><div class="line">            tree[x].cnt=<span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">int</span> m=(l+r)/<span class="number">2</span>;</div><div class="line">    <span class="keyword">if</span>(rk&lt;=m)</div><div class="line">    &#123;</div><div class="line">        update(rk,f,l,m,x&lt;&lt;<span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> update(rk,f,m+<span class="number">1</span>,r,x&lt;&lt;<span class="number">1</span>|<span class="number">1</span>);</div><div class="line">    pushup(x);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> n;</div><div class="line">    <span class="built_in">cin</span>&gt;&gt;n;</div><div class="line">    init();</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">    &#123;</div><div class="line">        <span class="built_in">string</span> s;</div><div class="line">        <span class="built_in">cin</span>&gt;&gt;s;</div><div class="line">        <span class="keyword">if</span>(s[<span class="number">0</span>]==<span class="string">'a'</span>)</div><div class="line">        &#123;</div><div class="line">            p[i].f=<span class="number">1</span>;</div><div class="line">            <span class="built_in">cin</span>&gt;&gt;p[i].val;</div><div class="line">            num[cnt++]=p[i].val;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(s[<span class="number">0</span>]==<span class="string">'d'</span>)</div><div class="line">        &#123;</div><div class="line">            p[i].f=<span class="number">0</span>;</div><div class="line">            <span class="built_in">cin</span>&gt;&gt;p[i].val;</div><div class="line">            num[cnt++]=p[i].val;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> p[i].f=<span class="number">-1</span>;</div><div class="line">    &#125;</div><div class="line">    sort(num,num+cnt);</div><div class="line">    cnt=unique(num,num+cnt)-num;</div><div class="line">    <span class="comment">//cout&lt;&lt;cnt&lt;&lt;endl;</span></div><div class="line">    <span class="comment">//for(int i=0;i&lt;cnt;i++)</span></div><div class="line">    <span class="comment">//    cout&lt;&lt;num[i]&lt;&lt;" ";</span></div><div class="line">    <span class="comment">//cout&lt;&lt;endl;</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span>(p[i].f==<span class="number">-1</span>)</div><div class="line">        &#123;</div><div class="line">            <span class="built_in">cout</span>&lt;&lt;tree[<span class="number">1</span>].sum[<span class="number">3</span>]&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(p[i].f==<span class="number">1</span>)</div><div class="line">        &#123;</div><div class="line">            <span class="comment">//cout&lt;&lt;p[i].val&lt;&lt;" "&lt;&lt;getrank(p[i].val)&lt;&lt;endl;</span></div><div class="line">            update(getrank(p[i].val),<span class="number">1</span>,<span class="number">1</span>,n,<span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> update(getrank(p[i].val),<span class="number">0</span>,<span class="number">1</span>,n,<span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">acm</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">队训day6</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">线段树</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/24/codeforces-85D/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-poj2528" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -817,89 +895,6 @@
 
 
   
-    <article id="post-poj2251" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/21/poj2251/">poj2251</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/21/poj2251/" class="archive-article-date">
-  	<time datetime="2017-06-21T13:50:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><font color="gray" size="6">Dungeon Master</font><br>You are trapped in a 3D dungeon and need to find the quickest way out! The dungeon is composed of unit cubes which may or may not be filled with rock. It takes one minute to move one unit north, south, east, west, up or down. You cannot move diagonally and the maze is surrounded by solid rock on all sides. </p>
-<p>Is an escape possible? If yes, how long will it take?<br>Input<br>The input consists of a number of dungeons. Each dungeon description starts with a line containing three integers L, R and C (all limited to 30 in size).<br>L is the number of levels making up the dungeon.<br>R and C are the number of rows and columns making up the plan of each level.<br>Then there will follow L blocks of R lines each containing C characters. Each character describes one cell of the dungeon. A cell full of rock is indicated by a ‘#’ and empty cells are represented by a ‘.’. Your starting position is indicated by ‘S’ and the exit by the letter ‘E’. There’s a single blank line after each level. Input is terminated by three zeroes for L, R and C.<br>Output<br>Each maze generates one line of output. If it is possible to reach the exit, print a line of the form<br>Escaped in x minute(s).</p>
-<p>where x is replaced by the shortest time it takes to escape.<br>If it is not possible to escape, print the line<br>Trapped!<br>Sample Input<br>3 4 5<br>S….<br>.###.<br>.##..</p>
-<p>###.#</p>
-<p>#####</p>
-<p>#####</p>
-<p>##.##</p>
-<p>##…</p>
-<p>#####</p>
-<p>#####</p>
-<p>#.###</p>
-<p>####E</p>
-<p>1 3 3<br>S##</p>
-<p>#E#</p>
-<p>###</p>
-<p>0 0 0<br>Sample Output<br>Escaped in 11 minute(s).<br>Trapped!</p>
-<p>三维最短路，裸bfs即可</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">int</span> prime[<span class="number">32000</span>];</div><div class="line"><span class="keyword">int</span> cnt;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">isprime</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    prime[<span class="number">0</span>]=<span class="number">2</span>;</div><div class="line">    cnt=<span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">3</span>;i&lt;<span class="number">32000</span>;i+=<span class="number">2</span>)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">int</span> flag=<span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;cnt;j++)</div><div class="line">        &#123;</div><div class="line">             <span class="keyword">if</span>(i%prime[j]==<span class="number">0</span>)</div><div class="line">                 flag=<span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(flag==<span class="number">0</span>)</div><div class="line">            prime[cnt++]=i;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">pp</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> p,<span class="keyword">long</span> <span class="keyword">long</span> a)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">long</span> <span class="keyword">long</span> tmp=<span class="number">1</span>,tp=p;</div><div class="line">    <span class="keyword">while</span>(tp)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span>(tp%<span class="number">2</span>)</div><div class="line">            tmp=(tmp*a)%p;</div><div class="line">        tp/=<span class="number">2</span>;</div><div class="line">        a=(a*a)%p;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> tmp;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</div><div class="line">    isprime();</div><div class="line">    <span class="keyword">long</span> <span class="keyword">long</span> p,a;</div><div class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;p&gt;&gt;a&amp;&amp;p&amp;&amp;a)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">int</span> flag=<span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;cnt&amp;&amp;prime[i]&lt;p;i++)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span>(p%prime[i]==<span class="number">0</span>)</div><div class="line">                flag=<span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(flag&amp;&amp;a==pp(p,a)) <span class="built_in">cout</span>&lt;&lt;<span class="string">"yes"</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">        <span class="keyword">else</span> <span class="built_in">cout</span>&lt;&lt;<span class="string">"no"</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">acm</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">队训day1</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">bfs</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/21/poj2251/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -996,7 +991,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">一些感想</a>
+                <a href="javascript:void(0)" class="js-tag color4">acm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">队训day6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">线段树</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1013,6 +1016,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">乘法逆元</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">一些感想</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1040,10 +1047,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">acm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">队训day1</a>
               </li>
              
@@ -1056,19 +1059,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">队训day6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">线段树</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">中国剩余定理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">离散化</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1081,6 +1072,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">凸包</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">离散化</a>
               </li>
             
             <div class="clearfix"></div>
