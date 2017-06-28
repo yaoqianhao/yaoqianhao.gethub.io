@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/06/28/A-B/index.html">
 <meta property="og:site_name" content="姚乾浩的博客">
 <meta property="og:description" content="A/B     要求(A/B)%9973，但由于A很大，我们只给出n(n=A%9973)(我们给定的A必能被B整除，且gcd(B,9973) = 1)。Input    数据的第一行是一个T，表示有T组数据。    每组数据有两个数n(0 &amp;lt;= n &amp;lt; 9973)和B(1 &amp;lt;= B &amp;lt;= 10^9)。Output    对应每组数据输出(A/B)%9973。Sample I">
-<meta property="og:updated_time" content="2017-06-28T06:51:25.596Z">
+<meta property="og:updated_time" content="2017-06-28T14:18:13.147Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="A&#x2F;B">
 <meta name="twitter:description" content="A/B     要求(A/B)%9973，但由于A很大，我们只给出n(n=A%9973)(我们给定的A必能被B整除，且gcd(B,9973) = 1)。Input    数据的第一行是一个T，表示有T组数据。    每组数据有两个数n(0 &amp;lt;= n &amp;lt; 9973)和B(1 &amp;lt;= B &amp;lt;= 10^9)。Output    对应每组数据输出(A/B)%9973。Sample I">
@@ -174,18 +174,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><font color="gray" size="6">A/B</font><br>     要求(A/B)%9973，但由于A很大，我们只给出n(n=A%9973)(我们给定的A必能被B整除，且gcd(B,9973) = 1)。<br>Input<br>    数据的第一行是一个T，表示有T组数据。<br>    每组数据有两个数n(0 &lt;= n &lt; 9973)和B(1 &lt;= B &lt;= 10^9)。<br>Output<br>    对应每组数据输出(A/B)%9973。<br>Sample Input</p>
-<pre><code>2
-1000 53
-87 123456789
-</code></pre><p>Sample Output</p>
-<pre><code>7922
-6060
-
-
-
-因为题目保证了gcd（B，9973）==1 所以直接用扩欧即可
-</code></pre><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">extgcd</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> a,<span class="keyword">long</span> <span class="keyword">long</span> b,<span class="keyword">long</span> <span class="keyword">long</span> &amp;x,<span class="keyword">long</span> <span class="keyword">long</span> &amp;y)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">long</span> <span class="keyword">long</span> d=a;</div><div class="line">    <span class="keyword">if</span>(b==<span class="number">0</span>)</div><div class="line">    &#123;</div><div class="line">        x=<span class="number">1</span>;</div><div class="line">        y=<span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span></div><div class="line">    &#123;</div><div class="line">        d=extgcd(b,a%b,x,y);</div><div class="line">        <span class="keyword">long</span> <span class="keyword">long</span> tx=x;</div><div class="line">        x=y;</div><div class="line">        y=tx-(a/b)*y;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> d;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> t;</div><div class="line">    <span class="built_in">cin</span>&gt;&gt;t;</div><div class="line">    <span class="keyword">while</span>(t--)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">long</span> <span class="keyword">long</span> n,b;</div><div class="line">        <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;b;</div><div class="line">        <span class="keyword">long</span> <span class="keyword">long</span> x,y;</div><div class="line">        extgcd(b,<span class="number">9973</span>,x,y);</div><div class="line">        <span class="keyword">long</span> <span class="keyword">long</span> bni=(x%<span class="number">9973</span>+<span class="number">9973</span>)%<span class="number">9973</span>;</div><div class="line">        <span class="built_in">cout</span>&lt;&lt;(bni*n)%<span class="number">9973</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <p><font color="gray" size="6">A/B</font><br>     要求(A/B)%9973，但由于A很大，我们只给出n(n=A%9973)(我们给定的A必能被B整除，且gcd(B,9973) = 1)。<br>Input<br>    数据的第一行是一个T，表示有T组数据。<br>    每组数据有两个数n(0 &lt;= n &lt; 9973)和B(1 &lt;= B &lt;= 10^9)。<br>Output<br>    对应每组数据输出(A/B)%9973。<br>Sample Input<br>2<br>1000 53<br>87 123456789</p>
+<p>Sample Output<br>7922<br>6060</p>
+<p>因为题目保证了gcd（B，9973）==1 所以直接用扩欧即可</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">extgcd</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> a,<span class="keyword">long</span> <span class="keyword">long</span> b,<span class="keyword">long</span> <span class="keyword">long</span> &amp;x,<span class="keyword">long</span> <span class="keyword">long</span> &amp;y)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">long</span> <span class="keyword">long</span> d=a;</div><div class="line">    <span class="keyword">if</span>(b==<span class="number">0</span>)</div><div class="line">    &#123;</div><div class="line">        x=<span class="number">1</span>;</div><div class="line">        y=<span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span></div><div class="line">    &#123;</div><div class="line">        d=extgcd(b,a%b,x,y);</div><div class="line">        <span class="keyword">long</span> <span class="keyword">long</span> tx=x;</div><div class="line">        x=y;</div><div class="line">        y=tx-(a/b)*y;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> d;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> t;</div><div class="line">    <span class="built_in">cin</span>&gt;&gt;t;</div><div class="line">    <span class="keyword">while</span>(t--)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">long</span> <span class="keyword">long</span> n,b;</div><div class="line">        <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;b;</div><div class="line">        <span class="keyword">long</span> <span class="keyword">long</span> x,y;</div><div class="line">        extgcd(b,<span class="number">9973</span>,x,y);</div><div class="line">        <span class="keyword">long</span> <span class="keyword">long</span> bni=(x%<span class="number">9973</span>+<span class="number">9973</span>)%<span class="number">9973</span>;</div><div class="line">        <span class="built_in">cout</span>&lt;&lt;(bni*n)%<span class="number">9973</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
 
       
@@ -420,18 +412,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">acm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">队训day6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">线段树</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">队训day7</a>
               </li>
              
@@ -448,7 +428,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">一些感想</a>
+                <a href="javascript:void(0)" class="js-tag color4">acm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">队训day6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">线段树</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -473,6 +461,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">快速幂</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">一些感想</a>
               </li>
              
               <li class="article-tag-list-item">
