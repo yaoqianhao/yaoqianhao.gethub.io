@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>poj2115 | 姚乾浩的博客</title>
+  <title>poj3468 | 姚乾浩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="C Looooops">
-<meta name="keywords" content="队训day7,扩展欧几里德算法,数论,acm">
+  <meta name="description" content="A Simple Problem with Integers">
+<meta name="keywords" content="acm,队训day6,线段树">
 <meta property="og:type" content="article">
-<meta property="og:title" content="poj2115">
-<meta property="og:url" content="http://yoursite.com/2017/06/28/poj2115/index.html">
+<meta property="og:title" content="poj3468">
+<meta property="og:url" content="http://yoursite.com/2017/06/30/poj3468/index.html">
 <meta property="og:site_name" content="姚乾浩的博客">
-<meta property="og:description" content="C Looooops">
-<meta property="og:updated_time" content="2017-06-30T11:30:37.346Z">
+<meta property="og:description" content="A Simple Problem with Integers">
+<meta property="og:updated_time" content="2017-06-30T12:16:31.849Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="poj2115">
-<meta name="twitter:description" content="C Looooops">
+<meta name="twitter:title" content="poj3468">
+<meta name="twitter:description" content="A Simple Problem with Integers">
   
     <link rel="alternative" href="/atom.xml" title="姚乾浩的博客" type="application/atom+xml">
   
@@ -160,34 +160,29 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-poj2115" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-poj3468" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      poj2115
+      poj3468
     </h1>
   
 
         
-        <a href="/2017/06/28/poj2115/" class="archive-article-date">
-  	<time datetime="2017-06-28T05:40:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-28</time>
+        <a href="/2017/06/30/poj3468/" class="archive-article-date">
+  	<time datetime="2017-06-30T12:13:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-30</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><font color="gray" size="6">C Looooops</font><br><a id="more"></a><br>A Compiler Mystery: We are given a C-language style for loop of type<br>for (variable = A; variable != B; variable += C)</p>
-<p>  statement;</p>
-<p>I.e., a loop which starts by setting variable to value A and while variable is not equal to B, repeats statement followed by increasing the variable by C. We want to know how many times does the statement get executed for particular values of A, B and C, assuming that all arithmetics is calculated in a k-bit unsigned integer type (with values 0 &lt;= x &lt; 2 k) modulo 2 k.</p>
-<p>Input<br>The input consists of several instances. Each instance is described by a single line with four integers A, B, C, k separated by a single space. The integer k (1 &lt;= k &lt;= 32) is the number of bits of the control variable of the loop and A, B, C (0 &lt;= A, B, C &lt; 2 k) are the parameters of the loop.<br>The input is finished by a line containing four zeros.</p>
-<p>Output<br>    The output consists of several lines corresponding to the instances on the input. The i-th line contains either the number of executions of the statement in the i-th instance (a single integer number) or the word FOREVER if the loop does not terminate.<br>Sample Input<br>3 3 2 16<br>3 7 2 16<br>7 3 2 16<br>3 4 2 16<br>0 0 0 0</p>
-<p>Sample Output<br>0<br>2<br>32766<br>FOREVER</p>
-<p>题意：实际上就是求解 Cx+(2^k)y=b-a 对于x的最小非负解<br>那么这个就是用扩展欧几里德算法解二元不定方程</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">extgcd</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> a,<span class="keyword">long</span> <span class="keyword">long</span> b,<span class="keyword">long</span> <span class="keyword">long</span> &amp;x,<span class="keyword">long</span> <span class="keyword">long</span> &amp;y)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">long</span> <span class="keyword">long</span> d=a;</div><div class="line">    <span class="keyword">if</span>(b==<span class="number">0</span>)</div><div class="line">    &#123;</div><div class="line">        x=<span class="number">1</span>;</div><div class="line">        y=<span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span></div><div class="line">    &#123;</div><div class="line">        d=extgcd(b,a%b,x,y);</div><div class="line">        <span class="keyword">long</span> <span class="keyword">long</span> tx=x;</div><div class="line">        x=y;</div><div class="line">        y=tx-(a/b)*y;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> d;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">long</span> <span class="keyword">long</span> num[<span class="number">35</span>];</div><div class="line">    num[<span class="number">0</span>]=<span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">32</span>;i++)</div><div class="line">        num[i]=num[i<span class="number">-1</span>]*<span class="number">2</span>;</div><div class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</div><div class="line">    <span class="keyword">int</span> a,b,c,k;</div><div class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;a&gt;&gt;b&gt;&gt;c&gt;&gt;k&amp;&amp;k)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">long</span> <span class="keyword">long</span> x,y;</div><div class="line">        <span class="keyword">long</span> <span class="keyword">long</span> cnt=<span class="number">0</span>;</div><div class="line">        <span class="keyword">long</span> <span class="keyword">long</span> f=b-a;</div><div class="line">        <span class="keyword">long</span> <span class="keyword">long</span> d=extgcd(c,num[k],x,y);</div><div class="line">        <span class="keyword">if</span>(f%d!=<span class="number">0</span>)</div><div class="line">        &#123;</div><div class="line">            <span class="built_in">cout</span>&lt;&lt;<span class="string">"FOREVER"</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span></div><div class="line">        &#123;</div><div class="line">            cnt=(x*(f/d)%(num[k]/d)+(num[k]/d))%(num[k]/d);</div><div class="line">            <span class="built_in">cout</span>&lt;&lt;cnt&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <p><font color="gray" size="6">A Simple Problem with Integers</font><br><a id="more"></a><br>You have N integers, A1, A2, … , AN. You need to deal with two kinds of operations. One type of operation is to add some given number to each number in a given interval. The other is to ask for the sum of numbers in a given interval.<br>Input<br>The first line contains two numbers N and Q. 1 ≤ N,Q ≤ 100000.<br>The second line contains N numbers, the initial values of A1, A2, … , AN. -1000000000 ≤ Ai ≤ 1000000000.<br>Each of the next Q lines represents an operation.<br>“C a b c” means adding c to each of Aa, Aa+1, … , Ab. -10000 ≤ c ≤ 10000.<br>“Q a b” means querying the sum of Aa, Aa+1, … , Ab.<br>Output<br>You need to answer all Q commands in order. One answer in a line.<br>Sample Input<br>10 5<br>1 2 3 4 5 6 7 8 9 10<br>Q 4 4<br>Q 1 10<br>Q 2 4<br>C 3 6 3<br>Q 2 4<br>Sample Output<br>4<br>55<br>9<br>15<br>Hint<br>The sums may exceed the range of 32-bit integers. </p>
+<p>线段树基础题，段维护和</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">data</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> l,r;</div><div class="line">    <span class="keyword">long</span> <span class="keyword">long</span> val,add;</div><div class="line">&#125;;</div><div class="line">data tree[<span class="number">400006</span>];</div><div class="line"><span class="keyword">int</span> n,q;</div><div class="line"><span class="keyword">int</span> num[<span class="number">100005</span>];</div><div class="line"><span class="keyword">long</span> <span class="keyword">long</span> ans;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">pushup</span><span class="params">(<span class="keyword">int</span> x)</span></span></div><div class="line">&#123;</div><div class="line">    tree[x].val=tree[x&lt;&lt;<span class="number">1</span>].val+tree[x&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].val;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">pushdown</span><span class="params">(<span class="keyword">int</span> x)</span></span></div><div class="line">&#123;</div><div class="line">   tree[x&lt;&lt;<span class="number">1</span>].add+=tree[x].add;</div><div class="line">   tree[x&lt;&lt;<span class="number">1</span>].val+=(tree[x&lt;&lt;<span class="number">1</span>].r-tree[x&lt;&lt;<span class="number">1</span>].l+<span class="number">1</span>)*tree[x].add;</div><div class="line"></div><div class="line">   tree[x&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].add+=tree[x].add;</div><div class="line">   tree[x&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].val+=(tree[x&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].r-tree[x&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].l+<span class="number">1</span>)*tree[x].add;</div><div class="line">   tree[x].add=<span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> x,<span class="keyword">int</span> v)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> mid=(tree[x].l+tree[x].r)/<span class="number">2</span>;</div><div class="line">    <span class="keyword">if</span>(l&lt;=tree[x].l&amp;&amp;r&gt;=tree[x].r)</div><div class="line">    &#123;</div><div class="line">        tree[x].add+=v;</div><div class="line">        tree[x].val+=(tree[x].r-tree[x].l+<span class="number">1</span>)*v;</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(tree[x].add!=<span class="number">0</span>)</div><div class="line">        pushdown(x);</div><div class="line">    <span class="keyword">if</span>(r&lt;=mid)</div><div class="line">    &#123;</div><div class="line">        update(l,r,x&lt;&lt;<span class="number">1</span>,v);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(l&gt;mid)</div><div class="line">    &#123;</div><div class="line">        update(l,r,x&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,v);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span></div><div class="line">    &#123;</div><div class="line">        update(l,r,x&lt;&lt;<span class="number">1</span>,v);</div><div class="line">        update(l,r,x&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,v);</div><div class="line">    &#125;</div><div class="line">    pushup(x);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> x)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">//cout&lt;&lt;l&lt;&lt;" "&lt;&lt;r&lt;&lt;" "&lt;&lt;x&lt;&lt;endl;</span></div><div class="line">    tree[x].l=l;</div><div class="line">    tree[x].r=r;</div><div class="line">    tree[x].add=<span class="number">0</span>;</div><div class="line">    <span class="keyword">if</span>(l==r)</div><div class="line">    &#123;</div><div class="line">        tree[x].val=num[l];</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">int</span> tmp=(l+r)/<span class="number">2</span>;</div><div class="line">    build(l,tmp,x&lt;&lt;<span class="number">1</span>);</div><div class="line">    build(tmp+<span class="number">1</span>,r,x&lt;&lt;<span class="number">1</span>|<span class="number">1</span>);</div><div class="line">    pushup(x);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> x)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">//cout&lt;&lt;x&lt;&lt;" "&lt;&lt;(x&lt;&lt;1)&lt;&lt;endl;</span></div><div class="line">    <span class="keyword">int</span> mid=(tree[x].l+tree[x].r)/<span class="number">2</span>;</div><div class="line">    <span class="keyword">if</span>(l&lt;=tree[x].l&amp;&amp;r&gt;=tree[x].r)</div><div class="line">    &#123;</div><div class="line">        ans+=tree[x].val;</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(tree[x].add)</div><div class="line">    &#123;</div><div class="line">        pushdown(x);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(r&lt;=mid)</div><div class="line">    &#123;</div><div class="line">        query(l,r,x&lt;&lt;<span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(l&gt;mid)</div><div class="line">    &#123;</div><div class="line">        query(l,r,x&lt;&lt;<span class="number">1</span>|<span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span></div><div class="line">    &#123;</div><div class="line">        query(l,r,x&lt;&lt;<span class="number">1</span>);</div><div class="line">        query(l,r,x&lt;&lt;<span class="number">1</span>|<span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</div><div class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;q)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</div><div class="line">            <span class="built_in">cin</span>&gt;&gt;num[i];</div><div class="line">        build(<span class="number">1</span>,n,<span class="number">1</span>);</div><div class="line">        <span class="keyword">while</span>(q--)</div><div class="line">        &#123;</div><div class="line">            <span class="built_in">string</span> s;</div><div class="line">            <span class="built_in">cin</span>&gt;&gt;s;</div><div class="line">            ans=<span class="number">0</span>;</div><div class="line">            <span class="keyword">if</span>(s[<span class="number">0</span>]==<span class="string">'Q'</span>)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">int</span> ll,rr;</div><div class="line">                <span class="built_in">cin</span>&gt;&gt;ll&gt;&gt;rr;</div><div class="line">                query(ll,rr,<span class="number">1</span>);</div><div class="line">                <span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span></div><div class="line">            &#123;</div><div class="line">                <span class="keyword">int</span> ll,rr,vv;</div><div class="line">                <span class="built_in">cin</span>&gt;&gt;ll&gt;&gt;rr&gt;&gt;vv;</div><div class="line">                update(ll,rr,<span class="number">1</span>,vv);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
 
       
@@ -221,19 +216,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">队训day7</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">扩展欧几里德算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数论</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">acm</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">队训day6</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">线段树</a>
         		</li>
       		
 		</ul>
@@ -289,7 +280,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/06/28/poj2115/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/06/30/poj3468/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -303,18 +294,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/06/28/poj1061/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          poj1061
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/06/25/hdu5700/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">hdu5700</div>
+    <a href="/2017/06/30/poj3264/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">poj3264</div>
       <i class="icon-circle-right"></i>
     </a>
   
