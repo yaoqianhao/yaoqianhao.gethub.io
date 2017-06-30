@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>poj2828 | 姚乾浩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Buy TicketsRailway tickets were difficult to buy around the Lunar New Year in China, so we must get up early and join a long queue…The Lunar New Year was approaching, but unluckily the Little Cat stil">
+  <meta name="description" content="Buy Tickets">
 <meta name="keywords" content="acm,队训day6,线段树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="poj2828">
 <meta property="og:url" content="http://yoursite.com/2017/06/24/poj2828/index.html">
 <meta property="og:site_name" content="姚乾浩的博客">
-<meta property="og:description" content="Buy TicketsRailway tickets were difficult to buy around the Lunar New Year in China, so we must get up early and join a long queue…The Lunar New Year was approaching, but unluckily the Little Cat stil">
+<meta property="og:description" content="Buy Tickets">
 <meta property="og:image" content="http://yoursite.com/2017/06/24/poj2828/b9016c4cbefd63dba96b117b503374d9.jpg">
-<meta property="og:updated_time" content="2017-06-24T06:19:12.831Z">
+<meta property="og:updated_time" content="2017-06-30T04:30:01.775Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="poj2828">
-<meta name="twitter:description" content="Buy TicketsRailway tickets were difficult to buy around the Lunar New Year in China, so we must get up early and join a long queue…The Lunar New Year was approaching, but unluckily the Little Cat stil">
+<meta name="twitter:description" content="Buy Tickets">
 <meta name="twitter:image" content="http://yoursite.com/2017/06/24/poj2828/b9016c4cbefd63dba96b117b503374d9.jpg">
   
     <link rel="alternative" href="/atom.xml" title="姚乾浩的博客" type="application/atom+xml">
@@ -176,7 +176,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <font color="gray" size="6">Buy Tickets</font><br>Railway tickets were difficult to buy around the Lunar New Year in China, so we must get up early and join a long queue…<br><br>The Lunar New Year was approaching, but unluckily the Little Cat still had schedules going here and there. Now, he had to travel by train to Mianyang, Sichuan Province for the winter camp selection of the national team of Olympiad in Informatics.<br><br>It was one o’clock a.m. and dark outside. Chill wind from the northwest did not scare off the people in the queue. The cold night gave the Little Cat a shiver. Why not find a problem to think about? That was none the less better than freezing to death!<br><br>People kept jumping the queue. Since it was too dark around, such moves would not be discovered even by the people adjacent to the queue-jumpers. “If every person in the queue is assigned an integral value and all the information about those who have jumped the queue and where they stand after queue-jumping is given, can I find out the final order of people in the queue?” Thought the Little Cat.<br><br>Input<br>There will be several test cases in the input. Each test case consists of N + 1 lines where N (1 ≤ N ≤ 200,000) is given in the first line of the test case. The next N lines contain the pairs of values Posi and Vali in the increasing order of i (1 ≤ i ≤ N). For each i, the ranges and meanings of Posi and Vali are as follows:<br><br>Posi ∈ [0, i − 1] — The i-th person came to the queue and stood right behind the Posi-th person in the queue. The booking office was considered the 0th person and the person at the front of the queue was considered the first person in the queue.<br>Vali ∈ [0, 32767] — The i-th person was assigned the value Vali.<br>There no blank lines between test cases. Proceed to the end of input.<br><br>Output<br>For each test cases, output a single line of space-separated integers which are the values of people in the order they stand in the queue.<br><br>Sample Input<br>4<br>0 77<br>1 51<br>1 33<br>2 69<br>4<br>0 20523<br>1 19243<br>1 3890<br>0 31492<br>Sample Output<br>77 33 69 51<br>31492 20523 3890 19243<br>Hint<br>The figure below shows how the Little Cat found out the final order of people in the queue described in the first test case of the sample input.<br><img src="/2017/06/24/poj2828/b9016c4cbefd63dba96b117b503374d9.jpg" alt="你想输入的替代文字"><br><br>题意大概是有n个人依次来排队，每个人可以插到他/她想插入的位置，这时候原来在那个位置的人以及在之后的人就后移一位。<br>非常棒的一道题。<br>这题初看完全没有像是线段树的样子，后来看了题解才想通。<br>线段树维护l,r之间的空位的数目，从后往前放人(这样做的理由是越是靠后的人越能够决定自己到底在什么位置)。<br>首先有一个很重要的隐藏条件= =在没想到之前我完全不理解题解做法。<font color="red">即当第一个人来的时候，他只能选择0这个位置</font>，同理往后推，第n个人只能选择0～n-1这些位置。<br>在知道了这一点之后，我们开始从后往前推。<br>最后一人可以任意选择位置。<br>对于倒数第二人：选择的位置若是在最后一人前面，那么就不会受最后一个人干扰，所在的位置即选择的位置；<br>                选择的位置若是在最后一人后面，那么必然会受到最后一人选位后影响，被向后推了一位。<br>依次类推。<br>那么就可以这么做：<br>在线段树update的时候，如果左儿子的空位数大于等于pos位置（此处的pos是输入的位置加1），那么就到左儿子；不然就到右儿子，此时pos-左儿子的空位数。<br>这么做的本质是 <font color="red">如果后面几个人选的位置比此人选的靠前，此人的最终位置需要加上这些人数。</font>
+        <font color="gray" size="6">Buy Tickets</font><br><a id="more"></a><br>Railway tickets were difficult to buy around the Lunar New Year in China, so we must get up early and join a long queue…<br><br>The Lunar New Year was approaching, but unluckily the Little Cat still had schedules going here and there. Now, he had to travel by train to Mianyang, Sichuan Province for the winter camp selection of the national team of Olympiad in Informatics.<br><br>It was one o’clock a.m. and dark outside. Chill wind from the northwest did not scare off the people in the queue. The cold night gave the Little Cat a shiver. Why not find a problem to think about? That was none the less better than freezing to death!<br><br>People kept jumping the queue. Since it was too dark around, such moves would not be discovered even by the people adjacent to the queue-jumpers. “If every person in the queue is assigned an integral value and all the information about those who have jumped the queue and where they stand after queue-jumping is given, can I find out the final order of people in the queue?” Thought the Little Cat.<br><br>Input<br>There will be several test cases in the input. Each test case consists of N + 1 lines where N (1 ≤ N ≤ 200,000) is given in the first line of the test case. The next N lines contain the pairs of values Posi and Vali in the increasing order of i (1 ≤ i ≤ N). For each i, the ranges and meanings of Posi and Vali are as follows:<br><br>Posi ∈ [0, i − 1] — The i-th person came to the queue and stood right behind the Posi-th person in the queue. The booking office was considered the 0th person and the person at the front of the queue was considered the first person in the queue.<br>Vali ∈ [0, 32767] — The i-th person was assigned the value Vali.<br>There no blank lines between test cases. Proceed to the end of input.<br><br>Output<br>For each test cases, output a single line of space-separated integers which are the values of people in the order they stand in the queue.<br><br>Sample Input<br>4<br>0 77<br>1 51<br>1 33<br>2 69<br>4<br>0 20523<br>1 19243<br>1 3890<br>0 31492<br>Sample Output<br>77 33 69 51<br>31492 20523 3890 19243<br>Hint<br>The figure below shows how the Little Cat found out the final order of people in the queue described in the first test case of the sample input.<br><img src="/2017/06/24/poj2828/b9016c4cbefd63dba96b117b503374d9.jpg" alt="你想输入的替代文字"><br><br>题意大概是有n个人依次来排队，每个人可以插到他/她想插入的位置，这时候原来在那个位置的人以及在之后的人就后移一位。<br>非常棒的一道题。<br>这题初看完全没有像是线段树的样子，后来看了题解才想通。<br>线段树维护l,r之间的空位的数目，从后往前放人(这样做的理由是越是靠后的人越能够决定自己到底在什么位置)。<br>首先有一个很重要的隐藏条件= =在没想到之前我完全不理解题解做法。<font color="red">即当第一个人来的时候，他只能选择0这个位置</font>，同理往后推，第n个人只能选择0～n-1这些位置。<br>在知道了这一点之后，我们开始从后往前推。<br>最后一人可以任意选择位置。<br>对于倒数第二人：选择的位置若是在最后一人前面，那么就不会受最后一个人干扰，所在的位置即选择的位置；<br>                选择的位置若是在最后一人后面，那么必然会受到最后一人选位后影响，被向后推了一位。<br>依次类推。<br>那么就可以这么做：<br>在线段树update的时候，如果左儿子的空位数大于等于pos位置（此处的pos是输入的位置加1），那么就到左儿子；不然就到右儿子，此时pos-左儿子的空位数。<br>这么做的本质是 <font color="red">如果后面几个人选的位置比此人选的靠前，此人的最终位置需要加上这些人数。</font>
 
 
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">int</span> n;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">data</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> l,r,ept;</div><div class="line">&#125;;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">cg</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> pos,num;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">int</span> flag;</div><div class="line">cg in[<span class="number">200003</span>];</div><div class="line">data tree[<span class="number">800003</span>];</div><div class="line"><span class="keyword">int</span> number[<span class="number">200003</span>];</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> x)</span></span></div><div class="line">&#123;</div><div class="line">    tree[x].l=l;</div><div class="line">    tree[x].r=r;</div><div class="line">    <span class="keyword">if</span>(tree[x].l==tree[x].r)</div><div class="line">    &#123;</div><div class="line">        tree[x].ept=<span class="number">1</span>;</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">int</span> mid=(l+r)/<span class="number">2</span>;</div><div class="line">    build(l,mid,x&lt;&lt;<span class="number">1</span>);</div><div class="line">    build(mid+<span class="number">1</span>,r,x&lt;&lt;<span class="number">1</span>|<span class="number">1</span>);</div><div class="line">    tree[x].ept=tree[x&lt;&lt;<span class="number">1</span>].ept+tree[x&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].ept;</div><div class="line">    <span class="comment">//cout&lt;&lt;tree[x].l&lt;&lt;" "&lt;&lt;tree[x].r&lt;&lt;" "&lt;&lt;tree[x].ept&lt;&lt;endl;</span></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> pos,<span class="keyword">int</span> num,<span class="keyword">int</span> x)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span>(tree[x].l==tree[x].r)</div><div class="line">    &#123;</div><div class="line">        <span class="comment">//cout&lt;&lt;tree[x].l&lt;&lt;" "&lt;&lt;tree[x].r&lt;&lt;" "&lt;&lt;num&lt;&lt;endl;</span></div><div class="line">        number[tree[x].l]=num;</div><div class="line">        tree[x].ept=<span class="number">0</span>;</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">int</span> mid=(tree[x].l+tree[x].r)/<span class="number">2</span>;</div><div class="line">    <span class="keyword">if</span>(pos&lt;=tree[x&lt;&lt;<span class="number">1</span>].ept)</div><div class="line">        update(pos,num,x&lt;&lt;<span class="number">1</span>);</div><div class="line">    <span class="keyword">else</span> update(pos-tree[x&lt;&lt;<span class="number">1</span>].ept,num,x&lt;&lt;<span class="number">1</span>|<span class="number">1</span>);</div><div class="line">    tree[x].ept=tree[x&lt;&lt;<span class="number">1</span>].ept+tree[x&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].ept;</div><div class="line">    <span class="comment">//cout&lt;&lt;tree[x].l&lt;&lt;" "&lt;&lt;tree[x].r&lt;&lt;" "&lt;&lt;tree[x].ept&lt;&lt;endl;</span></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</div><div class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;n)</div><div class="line">    &#123;</div><div class="line">       build(<span class="number">1</span>,n,<span class="number">1</span>);</div><div class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</div><div class="line">       &#123;</div><div class="line">           <span class="built_in">cin</span>&gt;&gt;in[i].pos&gt;&gt;in[i].num;</div><div class="line">           in[i].pos++;</div><div class="line">       &#125;</div><div class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> i=n;i&gt;=<span class="number">1</span>;i--)</div><div class="line">       &#123;</div><div class="line">           update(in[i].pos,in[i].num,<span class="number">1</span>);</div><div class="line">       &#125;</div><div class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</div><div class="line">       &#123;</div><div class="line">           <span class="built_in">cout</span>&lt;&lt;number[i];</div><div class="line">           <span class="keyword">if</span>(i!=n)</div><div class="line">               <span class="built_in">cout</span>&lt;&lt;<span class="string">" "</span>;</div><div class="line">           <span class="keyword">else</span> <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">       &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -426,22 +426,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">acm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">队训day6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">线段树</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">一些感想</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
@@ -458,11 +442,23 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">辗转相除法</a>
+                <a href="javascript:void(0)" class="js-tag color5">一些感想</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">快速幂</a>
+                <a href="javascript:void(0)" class="js-tag color4">acm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">队训day6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">线段树</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">辗转相除法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -470,11 +466,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">dfs</a>
+                <a href="javascript:void(0)" class="js-tag color4">bfs</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">bfs</a>
+                <a href="javascript:void(0)" class="js-tag color4">快速幂</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -499,6 +495,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">凸包</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">dfs</a>
               </li>
              
               <li class="article-tag-list-item">

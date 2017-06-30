@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>poj1042 | 姚乾浩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Gone FishingJohn is going on a fishing trip. He has h hours available (1 &amp;lt;= h &amp;lt;= 16), and there are n lakes in the area (2 &amp;lt;= n &amp;lt;= 25) all reachable along a single, one-way road. John star">
+  <meta name="description" content="Gone Fishing">
 <meta name="keywords" content="队训day8-9,贪心">
 <meta property="og:type" content="article">
 <meta property="og:title" content="poj1042">
 <meta property="og:url" content="http://yoursite.com/2017/06/29/poj1042/index.html">
 <meta property="og:site_name" content="姚乾浩的博客">
-<meta property="og:description" content="Gone FishingJohn is going on a fishing trip. He has h hours available (1 &amp;lt;= h &amp;lt;= 16), and there are n lakes in the area (2 &amp;lt;= n &amp;lt;= 25) all reachable along a single, one-way road. John star">
-<meta property="og:updated_time" content="2017-06-29T04:34:29.794Z">
+<meta property="og:description" content="Gone Fishing">
+<meta property="og:updated_time" content="2017-06-29T11:30:16.164Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="poj1042">
-<meta name="twitter:description" content="Gone FishingJohn is going on a fishing trip. He has h hours available (1 &amp;lt;= h &amp;lt;= 16), and there are n lakes in the area (2 &amp;lt;= n &amp;lt;= 25) all reachable along a single, one-way road. John star">
+<meta name="twitter:description" content="Gone Fishing">
   
     <link rel="alternative" href="/atom.xml" title="姚乾浩的博客" type="application/atom+xml">
   
@@ -174,7 +174,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><font color="gray" size="6">Gone Fishing</font><br>John is going on a fishing trip. He has h hours available (1 &lt;= h &lt;= 16), and there are n lakes in the area (2 &lt;= n &lt;= 25) all reachable along a single, one-way road. John starts at lake 1, but he can finish at any lake he wants. He can only travel from one lake to the next one, but he does not have to stop at any lake unless he wishes to. For each i = 1,…,n - 1, the number of 5-minute intervals it takes to travel from lake i to lake i + 1 is denoted ti (0 &lt; ti &lt;=192). For example, t3 = 4 means that it takes 20 minutes to travel from lake 3 to lake 4. To help plan his fishing trip, John has gathered some information about the lakes. For each lake i, the number of fish expected to be caught in the initial 5 minutes, denoted fi( fi &gt;= 0 ), is known. Each 5 minutes of fishing decreases the number of fish expected to be caught in the next 5-minute interval by a constant rate of di (di &gt;= 0). If the number of fish expected to be caught in an interval is less than or equal to di , there will be no more fish left in the lake in the next interval. To simplify the planning, John assumes that no one else will be fishing at the lakes to affect the number of fish he expects to catch.<br>Write a program to help John plan his fishing trip to maximize the number of fish expected to be caught. The number of minutes spent at each lake must be a multiple of 5.<br>Input<br>You will be given a number of cases in the input. Each case starts with a line containing n. This is followed by a line containing h. Next, there is a line of n integers specifying fi (1 &lt;= i &lt;=n), then a line of n integers di (1 &lt;=i &lt;=n), and finally, a line of n - 1 integers ti (1 &lt;=i &lt;=n - 1). Input is terminated by a case in which n = 0.<br>Output<br>For each test case, print the number of minutes spent at each lake, separated by commas, for the plan achieving the maximum number of fish expected to be caught (you should print the entire plan on one line even if it exceeds 80 characters). This is followed by a line containing the number of fish expected.<br>If multiple plans exist, choose the one that spends as long as possible at lake 1, even if no fish are expected to be caught in some intervals. If there is still a tie, choose the one that spends as long as possible at lake 2, and so on. Insert a blank line between cases.<br>Sample Input<br>2<br>1<br>10 1<br>2 5<br>2<br>4<br>4<br>10 15 20 17<br>0 3 4 3<br>1 2 3<br>4<br>4<br>10 15 50 30<br>0 3 4 3<br>1 2 3<br>0 </p>
+        <p><font color="gray" size="6">Gone Fishing</font><br><a id="more"></a><br>John is going on a fishing trip. He has h hours available (1 &lt;= h &lt;= 16), and there are n lakes in the area (2 &lt;= n &lt;= 25) all reachable along a single, one-way road. John starts at lake 1, but he can finish at any lake he wants. He can only travel from one lake to the next one, but he does not have to stop at any lake unless he wishes to. For each i = 1,…,n - 1, the number of 5-minute intervals it takes to travel from lake i to lake i + 1 is denoted ti (0 &lt; ti &lt;=192). For example, t3 = 4 means that it takes 20 minutes to travel from lake 3 to lake 4. To help plan his fishing trip, John has gathered some information about the lakes. For each lake i, the number of fish expected to be caught in the initial 5 minutes, denoted fi( fi &gt;= 0 ), is known. Each 5 minutes of fishing decreases the number of fish expected to be caught in the next 5-minute interval by a constant rate of di (di &gt;= 0). If the number of fish expected to be caught in an interval is less than or equal to di , there will be no more fish left in the lake in the next interval. To simplify the planning, John assumes that no one else will be fishing at the lakes to affect the number of fish he expects to catch.<br>Write a program to help John plan his fishing trip to maximize the number of fish expected to be caught. The number of minutes spent at each lake must be a multiple of 5.<br>Input<br>You will be given a number of cases in the input. Each case starts with a line containing n. This is followed by a line containing h. Next, there is a line of n integers specifying fi (1 &lt;= i &lt;=n), then a line of n integers di (1 &lt;=i &lt;=n), and finally, a line of n - 1 integers ti (1 &lt;=i &lt;=n - 1). Input is terminated by a case in which n = 0.<br>Output<br>For each test case, print the number of minutes spent at each lake, separated by commas, for the plan achieving the maximum number of fish expected to be caught (you should print the entire plan on one line even if it exceeds 80 characters). This is followed by a line containing the number of fish expected.<br>If multiple plans exist, choose the one that spends as long as possible at lake 1, even if no fish are expected to be caught in some intervals. If there is still a tie, choose the one that spends as long as possible at lake 2, and so on. Insert a blank line between cases.<br>Sample Input<br>2<br>1<br>10 1<br>2 5<br>2<br>4<br>4<br>10 15 20 17<br>0 3 4 3<br>1 2 3<br>4<br>4<br>10 15 50 30<br>0 3 4 3<br>1 2 3<br>0 </p>
 <p>Sample Output<br>45, 5<br>Number of fish expected: 31 </p>
 <p>240, 0, 0, 0<br>Number of fish expected: 480 </p>
 <p>115, 10, 50, 35<br>Number of fish expected: 724 </p>
@@ -413,22 +413,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">acm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">队训day6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">线段树</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">一些感想</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
@@ -445,11 +429,23 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">辗转相除法</a>
+                <a href="javascript:void(0)" class="js-tag color5">一些感想</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">快速幂</a>
+                <a href="javascript:void(0)" class="js-tag color4">acm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">队训day6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">线段树</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">辗转相除法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -457,11 +453,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">dfs</a>
+                <a href="javascript:void(0)" class="js-tag color4">bfs</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">bfs</a>
+                <a href="javascript:void(0)" class="js-tag color4">快速幂</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -486,6 +482,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">凸包</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">dfs</a>
               </li>
              
               <li class="article-tag-list-item">

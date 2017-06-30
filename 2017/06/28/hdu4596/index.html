@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>hdu4596 | 姚乾浩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Yet another end of the worldIn the year 3013, it has been 1000 years since the previous predicted rapture. However, the Maya will not play a joke any more and the Rapture finally comes in. Fortunately">
+  <meta name="description" content="Yet another end of the world">
 <meta name="keywords" content="队训day7,扩展欧几里德算法,数论">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hdu4596">
 <meta property="og:url" content="http://yoursite.com/2017/06/28/hdu4596/index.html">
 <meta property="og:site_name" content="姚乾浩的博客">
-<meta property="og:description" content="Yet another end of the worldIn the year 3013, it has been 1000 years since the previous predicted rapture. However, the Maya will not play a joke any more and the Rapture finally comes in. Fortunately">
-<meta property="og:updated_time" content="2017-06-28T14:22:02.836Z">
+<meta property="og:description" content="Yet another end of the world">
+<meta property="og:updated_time" content="2017-06-30T04:32:04.630Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hdu4596">
-<meta name="twitter:description" content="Yet another end of the worldIn the year 3013, it has been 1000 years since the previous predicted rapture. However, the Maya will not play a joke any more and the Rapture finally comes in. Fortunately">
+<meta name="twitter:description" content="Yet another end of the world">
   
     <link rel="alternative" href="/atom.xml" title="姚乾浩的博客" type="application/atom+xml">
   
@@ -174,7 +174,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><font color="gray" size="6">Yet another end of the world</font><br>In the year 3013, it has been 1000 years since the previous predicted rapture. However, the Maya will not play a joke any more and the Rapture finally comes in. Fortunately people have already found out habitable planets, and made enough airships to convey all the human beings in the world. A large amount of airships are flying away the earth. People all bear to watch as this planet on which they have lived for millions of years. Nonetheless, scientists are worrying about anther problem…<br>As we know that long distance space travels are realized through the wormholes, which are given birth by the distortion of the energy fields in space. Airships will be driven into the wormholes to reach the other side of the universe by the suction devices placed in advance. Each wormhole has its configured attract parameters, X, Y or Z. When the value of ID%X is in Y,Z<br>    , this spaceship will be sucked into the wormhole by the huge attraction. However, the spaceship would be tear into piece if its ID meets the attract parameters of two wormholes or more at the same time.<br>    All the parameters are carefully adjusted initially, but some conservative, who treat the Rapture as a grain of truth and who are reluctant to abandon the treasure, combine with some evil scientists and disrupt the parameters. As a consequence, before the spaceships fly into gravity range, we should know whether the great tragedy would happen or not. Now the mission is on you.<br>Input<br>    Multiple test cases, ends with EOF.<br>    In each case, the first line contains an integer N(N&lt;=1000), which means the number of the wormholes.<br>    Then comes N lines, each line contains three integers X,Y,Z(0&lt;=Y&lt;=Z&lt;X&lt;2*10 9).<br>Output<br>    If there exists danger, output “Cannot Take off”, else output “Can Take off”.<br>Sample Input<br>2<br>7 2 3<br>7 5 6<br>2<br>7 2 2<br>9 2 2</p>
+        <p><font color="gray" size="6">Yet another end of the world</font><br><a id="more"></a><br>In the year 3013, it has been 1000 years since the previous predicted rapture. However, the Maya will not play a joke any more and the Rapture finally comes in. Fortunately people have already found out habitable planets, and made enough airships to convey all the human beings in the world. A large amount of airships are flying away the earth. People all bear to watch as this planet on which they have lived for millions of years. Nonetheless, scientists are worrying about anther problem…<br>As we know that long distance space travels are realized through the wormholes, which are given birth by the distortion of the energy fields in space. Airships will be driven into the wormholes to reach the other side of the universe by the suction devices placed in advance. Each wormhole has its configured attract parameters, X, Y or Z. When the value of ID%X is in Y,Z<br>    , this spaceship will be sucked into the wormhole by the huge attraction. However, the spaceship would be tear into piece if its ID meets the attract parameters of two wormholes or more at the same time.<br>    All the parameters are carefully adjusted initially, but some conservative, who treat the Rapture as a grain of truth and who are reluctant to abandon the treasure, combine with some evil scientists and disrupt the parameters. As a consequence, before the spaceships fly into gravity range, we should know whether the great tragedy would happen or not. Now the mission is on you.<br>Input<br>    Multiple test cases, ends with EOF.<br>    In each case, the first line contains an integer N(N&lt;=1000), which means the number of the wormholes.<br>    Then comes N lines, each line contains three integers X,Y,Z(0&lt;=Y&lt;=Z&lt;X&lt;2*10 9).<br>Output<br>    If there exists danger, output “Cannot Take off”, else output “Can Take off”.<br>Sample Input<br>2<br>7 2 3<br>7 5 6<br>2<br>7 2 2<br>9 2 2</p>
 <p>Sample Output<br>Can Take off<br>Cannot Take off</p>
 <p>如果存在一个ID使得能够满足%X在[Y,Z]中的两条，即输出Cannot<br>也就是暴力枚举所有两组xyz的情况，然后判断下式存不存在整数解<br>X1K1+X2K2=B-A 其中B-A的范围通过Y1,Y2,Z1,Z2来求</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">extgcd</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> a,<span class="keyword">long</span> <span class="keyword">long</span> b,<span class="keyword">long</span> <span class="keyword">long</span> &amp;x,<span class="keyword">long</span> <span class="keyword">long</span> &amp;y)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">long</span> <span class="keyword">long</span> d=a;</div><div class="line">    <span class="keyword">if</span>(b==<span class="number">0</span>)</div><div class="line">    &#123;</div><div class="line">        x=<span class="number">1</span>;</div><div class="line">        y=<span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span></div><div class="line">    &#123;</div><div class="line">        d=extgcd(b,a%b,x,y);</div><div class="line">        <span class="keyword">long</span> <span class="keyword">long</span> tx=x;</div><div class="line">        x=y;</div><div class="line">        y=tx-(a/b)*y;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> d;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</div><div class="line">     <span class="keyword">long</span> <span class="keyword">long</span> n;</div><div class="line">     <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;n)</div><div class="line">     &#123;</div><div class="line">         <span class="keyword">long</span> <span class="keyword">long</span> num[<span class="number">1002</span>],low[<span class="number">1002</span>],high[<span class="number">1002</span>];</div><div class="line">         <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">            <span class="built_in">cin</span>&gt;&gt;num[i]&gt;&gt;low[i]&gt;&gt;high[i];</div><div class="line">         <span class="keyword">int</span> flag=<span class="number">0</span>;</div><div class="line">         <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n<span class="number">-1</span>;i++)</div><div class="line">         &#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;n;j++)</div><div class="line">             &#123;</div><div class="line">                 <span class="keyword">if</span>(high[i]&gt;=low[j]&amp;&amp;high[j]&gt;=low[i])</div><div class="line">                 &#123;</div><div class="line">                     flag=<span class="number">1</span>;</div><div class="line">                     <span class="keyword">break</span>;</div><div class="line">                 &#125;</div><div class="line">                 <span class="keyword">long</span> <span class="keyword">long</span> x,y;</div><div class="line">                 <span class="keyword">long</span> <span class="keyword">long</span> gd=extgcd(num[i],num[j],x,y);</div><div class="line">                 <span class="keyword">long</span> <span class="keyword">long</span> lo=high[j]-low[i],hi=high[i]-low[j];</div><div class="line">                 <span class="keyword">if</span>(lo&lt;<span class="number">0</span>) lo*=<span class="number">-1</span>;<span class="keyword">if</span>(hi&lt;<span class="number">0</span>) hi*=<span class="number">-1</span>;</div><div class="line">                 <span class="keyword">if</span>(lo&gt;hi) swap(lo,hi);</div><div class="line">                 <span class="keyword">long</span> <span class="keyword">long</span> xx=lo/gd;</div><div class="line">                 <span class="keyword">if</span>(gd*xx&lt;lo) gd=gd*(xx+<span class="number">1</span>);</div><div class="line">                 <span class="keyword">else</span> gd=gd*xx;</div><div class="line">                 <span class="keyword">if</span>(gd&lt;=hi)</div><div class="line">                 &#123;</div><div class="line">                     flag=<span class="number">1</span>;</div><div class="line">                     <span class="keyword">break</span>;</div><div class="line">                 &#125;</div><div class="line">            &#125;</div><div class="line">             <span class="keyword">if</span>(flag) <span class="keyword">break</span>;</div><div class="line">         &#125;</div><div class="line">         <span class="keyword">if</span>(flag) <span class="built_in">cout</span>&lt;&lt;<span class="string">"Cannot Take off"</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">         <span class="keyword">else</span> <span class="built_in">cout</span>&lt;&lt;<span class="string">"Can Take off"</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">     &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -424,22 +424,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">acm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">队训day6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">线段树</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">一些感想</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
@@ -456,11 +440,23 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">辗转相除法</a>
+                <a href="javascript:void(0)" class="js-tag color5">一些感想</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">快速幂</a>
+                <a href="javascript:void(0)" class="js-tag color4">acm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">队训day6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">线段树</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">辗转相除法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -468,11 +464,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">dfs</a>
+                <a href="javascript:void(0)" class="js-tag color4">bfs</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">bfs</a>
+                <a href="javascript:void(0)" class="js-tag color4">快速幂</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -497,6 +493,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">凸包</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">dfs</a>
               </li>
              
               <li class="article-tag-list-item">

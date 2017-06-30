@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>poj1006 | 姚乾浩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Biorhythms  Some people believe that there are three cycles in a person&amp;apos;s life that start the day he or she is born. These three cycles are the physical, emotional, and intellectual cycles, and t">
+  <meta name="description" content="Biorhythms">
 <meta name="keywords" content="队训day7,扩展欧几里德算法,数论,中国剩余定理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="poj1006">
 <meta property="og:url" content="http://yoursite.com/2017/06/28/poj1006/index.html">
 <meta property="og:site_name" content="姚乾浩的博客">
-<meta property="og:description" content="Biorhythms  Some people believe that there are three cycles in a person&amp;apos;s life that start the day he or she is born. These three cycles are the physical, emotional, and intellectual cycles, and t">
-<meta property="og:updated_time" content="2017-06-28T11:21:42.760Z">
+<meta property="og:description" content="Biorhythms">
+<meta property="og:updated_time" content="2017-06-30T04:28:18.811Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="poj1006">
-<meta name="twitter:description" content="Biorhythms  Some people believe that there are three cycles in a person&amp;apos;s life that start the day he or she is born. These three cycles are the physical, emotional, and intellectual cycles, and t">
+<meta name="twitter:description" content="Biorhythms">
   
     <link rel="alternative" href="/atom.xml" title="姚乾浩的博客" type="application/atom+xml">
   
@@ -174,39 +174,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <font color="gray" size="6">Biorhythms</font>
-
-<pre><code>Some people believe that there are three cycles in a person&apos;s life that start the day he or she is born. These three cycles are the physical, emotional, and intellectual cycles, and they have periods of lengths 23, 28, and 33 days, respectively. There is one peak in each period of a cycle. At the peak of a cycle, a person performs at his or her best in the corresponding field (physical, emotional or mental). For example, if it is the mental curve, thought processes will be sharper and concentration will be easier.
-Since the three cycles have different periods, the peaks of the three cycles generally occur at different times. We would like to determine when a triple peak occurs (the peaks of all three cycles occur in the same day) for any person. For each cycle, you will be given the number of days from the beginning of the current year at which one of its peaks (not necessarily the first) occurs. You will also be given a date expressed as the number of days from the beginning of the current year. You task is to determine the number of days from the given date to the next triple peak. The given date is not counted. For example, if the given date is 10 and the next triple peak occurs on day 12, the answer is 2, not 3. If a triple peak occurs on the given date, you should give the number of days to the next occurrence of a triple peak.
-</code></pre><p>Input<br>    You will be given a number of cases. The input for each case consists of one line of four integers p, e, i, and d. The values p, e, and i are the number of days from the beginning of the current year at which the physical, emotional, and intellectual cycles peak, respectively. The value d is the given date and may be smaller than any of p, e, or i. All values are non-negative and at most 365, and you may assume that a triple peak will occur within 21252 days of the given date. The end of input is indicated by a line in which p = e = i = d = -1.<br>Output<br>    For each test case, print the case number followed by a message indicating the number of days to the next triple peak, in the form:</p>
-<pre><code>Case 1: the next triple peak occurs in 1234 days.
-
-Use the plural form ``days&apos;&apos; even if the answer is 1. 
-</code></pre><p>Sample Input</p>
-<pre><code>0 0 0 0
-0 0 0 100
-5 20 34 325
-4 5 6 7
-283 102 23 320
-203 301 203 40
--1 -1 -1 -1
-</code></pre><p>Sample Output</p>
-<pre><code>Case 1: the next triple peak occurs in 21252 days.
-Case 2: the next triple peak occurs in 21152 days.
-Case 3: the next triple peak occurs in 19575 days.
-Case 4: the next triple peak occurs in 16994 days.
-Case 5: the next triple peak occurs in 8910 days.
-Case 6: the next triple peak occurs in 10789 days.
-
-
-(n+d)%23=p
-(n+d)%28=e
-(n+d)%33=i
-n!=0
-求n
-
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line">	<span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">extgcd</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> a,<span class="keyword">long</span> <span class="keyword">long</span> b,<span class="keyword">long</span> <span class="keyword">long</span> &amp;x,<span class="keyword">long</span> <span class="keyword">long</span> &amp;y)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">long</span> <span class="keyword">long</span> d=a;</div><div class="line">    <span class="keyword">if</span>(b==<span class="number">0</span>)</div><div class="line">    &#123;</div><div class="line">        x=<span class="number">1</span>;</div><div class="line">        y=<span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span></div><div class="line">    &#123;</div><div class="line">        d=extgcd(b,a%b,x,y);</div><div class="line">        <span class="keyword">long</span> <span class="keyword">long</span> tx=x;</div><div class="line">        x=y;</div><div class="line">        y=tx-(a/b)*y;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> d;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> p,e,i,d;</div><div class="line">    <span class="keyword">int</span> cnt=<span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;p&gt;&gt;e&gt;&gt;i&gt;&gt;d)</div><div class="line">    &#123;</div><div class="line">        cnt++;</div><div class="line">        <span class="keyword">if</span>(p==<span class="number">-1</span>) <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">long</span> <span class="keyword">long</span> lcm=<span class="number">23</span>*<span class="number">28</span>*<span class="number">33</span>;</div><div class="line">        <span class="keyword">long</span> <span class="keyword">long</span> ei,pe,pi;</div><div class="line">        ei=<span class="number">28</span>*<span class="number">33</span>;</div><div class="line">        pe=<span class="number">23</span>*<span class="number">28</span>;</div><div class="line">        pi=<span class="number">23</span>*<span class="number">33</span>;</div><div class="line">        <span class="keyword">long</span> <span class="keyword">long</span> x,y,gd;</div><div class="line">        gd=extgcd(ei,<span class="number">23</span>,x,y);</div><div class="line">        ei=((x*p/gd)%(<span class="number">23</span>/gd)+<span class="number">23</span>/gd)%(<span class="number">23</span>/gd)*ei;</div><div class="line">        gd=extgcd(pe,<span class="number">33</span>,x,y);</div><div class="line">        pe=((x*i/gd)%(<span class="number">33</span>/gd)+<span class="number">33</span>/gd)%(<span class="number">33</span>/gd)*pe;</div><div class="line">        gd=extgcd(pi,<span class="number">28</span>,x,y);</div><div class="line">        pi=((x*e/gd)%(<span class="number">28</span>/gd)+<span class="number">28</span>/gd)%(<span class="number">28</span>/gd)*pi;</div><div class="line">        <span class="keyword">long</span> <span class="keyword">long</span> xx=ei+pe+pi;</div><div class="line">        <span class="keyword">if</span>(xx==<span class="number">0</span>)</div><div class="line">            xx=xx+lcm;</div><div class="line">        <span class="keyword">while</span>(xx-d&gt;lcm)</div><div class="line">            xx-=lcm;</div><div class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"Case "</span>&lt;&lt;cnt&lt;&lt;<span class="string">":"</span>&lt;&lt;<span class="string">" the next triple peak occurs in "</span>&lt;&lt;xx-d&lt;&lt;<span class="string">" days."</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</code></pre>
+        <p><font color="gray" size="6">Biorhythms</font><br><a id="more"></a><br>Some people believe that there are three cycles in a person’s life that start the day he or she is born. These three cycles are the physical, emotional, and intellectual cycles, and they have periods of lengths 23, 28, and 33 days, respectively. There is one peak in each period of a cycle. At the peak of a cycle, a person performs at his or her best in the corresponding field (physical, emotional or mental). For example, if it is the mental curve, thought processes will be sharper and concentration will be easier.<br>Since the three cycles have different periods, the peaks of the three cycles generally occur at different times. We would like to determine when a triple peak occurs (the peaks of all three cycles occur in the same day) for any person. For each cycle, you will be given the number of days from the beginning of the current year at which one of its peaks (not necessarily the first) occurs. You will also be given a date expressed as the number of days from the beginning of the current year. You task is to determine the number of days from the given date to the next triple peak. The given date is not counted. For example, if the given date is 10 and the next triple peak occurs on day 12, the answer is 2, not 3. If a triple peak occurs on the given date, you should give the number of days to the next occurrence of a triple peak.<br>Input<br>You will be given a number of cases. The input for each case consists of one line of four integers p, e, i, and d. The values p, e, and i are the number of days from the beginning of the current year at which the physical, emotional, and intellectual cycles peak, respectively. The value d is the given date and may be smaller than any of p, e, or i. All values are non-negative and at most 365, and you may assume that a triple peak will occur within 21252 days of the given date. The end of input is indicated by a line in which p = e = i = d = -1.<br>Output<br>For each test case, print the case number followed by a message indicating the number of days to the next triple peak, in the form:<br>Case 1: the next triple peak occurs in 1234 days.<br>Use the plural form ``days’’ even if the answer is 1.<br>Sample Input<br>0 0 0 0<br>0 0 0 100<br>5 20 34 325<br>4 5 6 7<br>283 102 23 320<br>203 301 203 40<br>-1 -1 -1 -1</p>
+<p>Sample Output<br>Case 1: the next triple peak occurs in 21252 days.<br>Case 2: the next triple peak occurs in 21152 days.<br>Case 3: the next triple peak occurs in 19575 days.<br>Case 4: the next triple peak occurs in 16994 days.<br>Case 5: the next triple peak occurs in 8910 days.<br>Case 6: the next triple peak occurs in 10789 days.</p>
+<p>(n+d)%23=p<br>(n+d)%28=e<br>(n+d)%33=i<br>n!=0<br>求n</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">extgcd</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> a,<span class="keyword">long</span> <span class="keyword">long</span> b,<span class="keyword">long</span> <span class="keyword">long</span> &amp;x,<span class="keyword">long</span> <span class="keyword">long</span> &amp;y)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">long</span> <span class="keyword">long</span> d=a;</div><div class="line">    <span class="keyword">if</span>(b==<span class="number">0</span>)</div><div class="line">    &#123;</div><div class="line">        x=<span class="number">1</span>;</div><div class="line">        y=<span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span></div><div class="line">    &#123;</div><div class="line">        d=extgcd(b,a%b,x,y);</div><div class="line">        <span class="keyword">long</span> <span class="keyword">long</span> tx=x;</div><div class="line">        x=y;</div><div class="line">        y=tx-(a/b)*y;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> d;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> p,e,i,d;</div><div class="line">    <span class="keyword">int</span> cnt=<span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;p&gt;&gt;e&gt;&gt;i&gt;&gt;d)</div><div class="line">    &#123;</div><div class="line">        cnt++;</div><div class="line">        <span class="keyword">if</span>(p==<span class="number">-1</span>) <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">long</span> <span class="keyword">long</span> lcm=<span class="number">23</span>*<span class="number">28</span>*<span class="number">33</span>;</div><div class="line">        <span class="keyword">long</span> <span class="keyword">long</span> ei,pe,pi;</div><div class="line">        ei=<span class="number">28</span>*<span class="number">33</span>;</div><div class="line">        pe=<span class="number">23</span>*<span class="number">28</span>;</div><div class="line">        pi=<span class="number">23</span>*<span class="number">33</span>;</div><div class="line">        <span class="keyword">long</span> <span class="keyword">long</span> x,y,gd;</div><div class="line">        gd=extgcd(ei,<span class="number">23</span>,x,y);</div><div class="line">        ei=((x*p/gd)%(<span class="number">23</span>/gd)+<span class="number">23</span>/gd)%(<span class="number">23</span>/gd)*ei;</div><div class="line">        gd=extgcd(pe,<span class="number">33</span>,x,y);</div><div class="line">        pe=((x*i/gd)%(<span class="number">33</span>/gd)+<span class="number">33</span>/gd)%(<span class="number">33</span>/gd)*pe;</div><div class="line">        gd=extgcd(pi,<span class="number">28</span>,x,y);</div><div class="line">        pi=((x*e/gd)%(<span class="number">28</span>/gd)+<span class="number">28</span>/gd)%(<span class="number">28</span>/gd)*pi;</div><div class="line">        <span class="keyword">long</span> <span class="keyword">long</span> xx=ei+pe+pi;</div><div class="line">        <span class="keyword">if</span>(xx==<span class="number">0</span>)</div><div class="line">            xx=xx+lcm;</div><div class="line">        <span class="keyword">while</span>(xx-d&gt;lcm)</div><div class="line">            xx-=lcm;</div><div class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"Case "</span>&lt;&lt;cnt&lt;&lt;<span class="string">":"</span>&lt;&lt;<span class="string">" the next triple peak occurs in "</span>&lt;&lt;xx-d&lt;&lt;<span class="string">" days."</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
 
       
@@ -457,22 +428,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">acm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">队训day6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">线段树</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">一些感想</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
@@ -489,11 +444,23 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">辗转相除法</a>
+                <a href="javascript:void(0)" class="js-tag color5">一些感想</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">快速幂</a>
+                <a href="javascript:void(0)" class="js-tag color4">acm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">队训day6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">线段树</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">辗转相除法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -501,11 +468,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">dfs</a>
+                <a href="javascript:void(0)" class="js-tag color4">bfs</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">bfs</a>
+                <a href="javascript:void(0)" class="js-tag color4">快速幂</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -530,6 +497,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">凸包</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">dfs</a>
               </li>
              
               <li class="article-tag-list-item">

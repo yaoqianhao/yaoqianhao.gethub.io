@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>hdu1211 | 姚乾浩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="RSARSA is one of the most powerful methods to encrypt data. The RSA algorithm is described as follow:  choose two large prime integer p, qcalculate n = p × q, calculate F(n) = (p - 1) × (q - 1)choose">
+  <meta name="description" content="RSA">
 <meta name="keywords" content="队训day7,数论,辗转相除法,快速幂">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hdu1211">
 <meta property="og:url" content="http://yoursite.com/2017/06/28/hdu1211/index.html">
 <meta property="og:site_name" content="姚乾浩的博客">
-<meta property="og:description" content="RSARSA is one of the most powerful methods to encrypt data. The RSA algorithm is described as follow:  choose two large prime integer p, qcalculate n = p × q, calculate F(n) = (p - 1) × (q - 1)choose">
-<meta property="og:updated_time" content="2017-06-28T14:10:35.819Z">
+<meta property="og:description" content="RSA">
+<meta property="og:updated_time" content="2017-06-30T04:32:38.574Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hdu1211">
-<meta name="twitter:description" content="RSARSA is one of the most powerful methods to encrypt data. The RSA algorithm is described as follow:  choose two large prime integer p, qcalculate n = p × q, calculate F(n) = (p - 1) × (q - 1)choose">
+<meta name="twitter:description" content="RSA">
   
     <link rel="alternative" href="/atom.xml" title="姚乾浩的博客" type="application/atom+xml">
   
@@ -174,7 +174,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><font color="gray" size="6">RSA</font><br>RSA is one of the most powerful methods to encrypt data. The RSA algorithm is described as follow:</p>
+        <p><font color="gray" size="6">RSA</font><br><a id="more"></a><br>RSA is one of the most powerful methods to encrypt data. The RSA algorithm is described as follow:</p>
 <blockquote>
 <p>choose two large prime integer p, q<br>calculate n = p × q, calculate F(n) = (p - 1) × (q - 1)<br>choose an integer e(1 &lt; e &lt; F(n)), making gcd(e, F(n)) = 1, e will be the public key<br>calculate d, making d × e mod F(n) = 1 mod F(n), and d will be the private key<br>You can encrypt data with this method :<br>C = E(m) = m e mod n<br>When you want to decrypt data, use this method :<br>M = D(c) = c d mod n<br>Here, c is an integer ASCII value of a letter of cryptograph and m is an integer ASCII value of a letter of plain text.<br>Now given p, q, e and some cryptograph, your task is to “translate” the cryptograph into plain text.<br>Input<br>    Each case will begin with four integers p, q, e, l followed by a line of cryptograph. The integers p, q, e, l will be in the range of 32-bit integer. The cryptograph consists of l integers separated by blanks.<br>Output<br>    For each case, output the plain text in a single line. You may assume that the correct result of plain text are visual ASCII letters, you should output them as visualable letters with no blank between them.<br>Sample Input<br>101 103 7 11<br>7716 7746 7497 126 8486 4708 7746 623 7298 7357 3239<br>Sample Output<br>I-LOVE-ACM.</p>
 </blockquote>
@@ -430,22 +430,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">acm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">队训day6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">线段树</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">一些感想</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
@@ -462,11 +446,23 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">辗转相除法</a>
+                <a href="javascript:void(0)" class="js-tag color5">一些感想</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">快速幂</a>
+                <a href="javascript:void(0)" class="js-tag color4">acm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">队训day6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">线段树</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">辗转相除法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -474,11 +470,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">dfs</a>
+                <a href="javascript:void(0)" class="js-tag color4">bfs</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">bfs</a>
+                <a href="javascript:void(0)" class="js-tag color4">快速幂</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -503,6 +499,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">凸包</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">dfs</a>
               </li>
              
               <li class="article-tag-list-item">

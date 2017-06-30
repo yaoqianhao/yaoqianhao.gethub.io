@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>hdu5700 | 姚乾浩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="区间交小A有一个含有n个非负整数的数列与m个区间。每个区间可以表示为li,ri。它想选择其中k个区间， 使得这些区间的交的那些位置所对应的数的和最大。例如样例中，选择[2,5]与[4,5]    两个区间就可以啦。Input多组测试数据第一行三个数n,k,m(1≤n≤100000,1≤k≤m≤100000)。接下来一行n个数ai，表示lyk的数列(0≤ai≤109)。接下来m行，每行两个数li,r">
+  <meta name="description" content="区间交">
 <meta name="keywords" content="acm,队训day6,线段树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hdu5700">
 <meta property="og:url" content="http://yoursite.com/2017/06/25/hdu5700/index.html">
 <meta property="og:site_name" content="姚乾浩的博客">
-<meta property="og:description" content="区间交小A有一个含有n个非负整数的数列与m个区间。每个区间可以表示为li,ri。它想选择其中k个区间， 使得这些区间的交的那些位置所对应的数的和最大。例如样例中，选择[2,5]与[4,5]    两个区间就可以啦。Input多组测试数据第一行三个数n,k,m(1≤n≤100000,1≤k≤m≤100000)。接下来一行n个数ai，表示lyk的数列(0≤ai≤109)。接下来m行，每行两个数li,r">
-<meta property="og:updated_time" content="2017-06-28T14:13:18.224Z">
+<meta property="og:description" content="区间交">
+<meta property="og:updated_time" content="2017-06-30T04:31:56.941Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hdu5700">
-<meta name="twitter:description" content="区间交小A有一个含有n个非负整数的数列与m个区间。每个区间可以表示为li,ri。它想选择其中k个区间， 使得这些区间的交的那些位置所对应的数的和最大。例如样例中，选择[2,5]与[4,5]    两个区间就可以啦。Input多组测试数据第一行三个数n,k,m(1≤n≤100000,1≤k≤m≤100000)。接下来一行n个数ai，表示lyk的数列(0≤ai≤109)。接下来m行，每行两个数li,r">
+<meta name="twitter:description" content="区间交">
   
     <link rel="alternative" href="/atom.xml" title="姚乾浩的博客" type="application/atom+xml">
   
@@ -174,7 +174,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><font color="gray" size="6">区间交</font><br>小A有一个含有n个非负整数的数列与m个区间。每个区间可以表示为li,ri。<br>它想选择其中k个区间， 使得这些区间的交的那些位置所对应的数的和最大。<br>例如样例中，选择[2,5]与[4,5]<br>    两个区间就可以啦。<br>Input<br>多组测试数据<br>第一行三个数n,k,m(1≤n≤100000,1≤k≤m≤100000)。<br>接下来一行n个数ai，表示lyk的数列(0≤ai≤109)。<br>接下来m行，每行两个数li,ri，表示每个区间(1≤li≤ri≤n)。<br>Output<br>    一行表示答案<br>Sample Input<br>5 2 3<br>1 2 3 4 6<br>4 5<br>2 5<br>1 4<br>Sample Output<br>10</p>
+        <p><font color="gray" size="6">区间交</font><br><a id="more"></a><br>小A有一个含有n个非负整数的数列与m个区间。每个区间可以表示为li,ri。<br>它想选择其中k个区间， 使得这些区间的交的那些位置所对应的数的和最大。<br>例如样例中，选择[2,5]与[4,5]<br>    两个区间就可以啦。<br>Input<br>多组测试数据<br>第一行三个数n,k,m(1≤n≤100000,1≤k≤m≤100000)。<br>接下来一行n个数ai，表示lyk的数列(0≤ai≤109)。<br>接下来m行，每行两个数li,ri，表示每个区间(1≤li≤ri≤n)。<br>Output<br>    一行表示答案<br>Sample Input<br>5 2 3<br>1 2 3 4 6<br>4 5<br>2 5<br>1 4<br>Sample Output<br>10</p>
 <p>其实这题感觉有dp思想<br>用左端点循环来更新右端点，然后线段树维护范围内右端点的个数，每次寻找找到符合要求k的最右的右端点<br>第一次更新左端点为1的所有区间，把对应的右端点放到线段树内 查询相交后以1为区间下限的最大情况<br>第二次更新左端点为2的所有区间，再查询<br>······<br>这样更新的话，在搜索的时候保证了前次更新的区间一定覆盖了这次的<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">int</span> n,k,m;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">data</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> l,r,rp;</div><div class="line">&#125;;</div><div class="line">data tree[<span class="number">400005</span>];</div><div class="line"><span class="keyword">long</span> <span class="keyword">long</span> sum[<span class="number">100005</span>],ans;</div><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; lr[<span class="number">100005</span>];</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> x)</span></span></div><div class="line">&#123;</div><div class="line">    tree[x].l=l;</div><div class="line">    tree[x].r=r;</div><div class="line">    tree[x].rp=<span class="number">0</span>;</div><div class="line">    <span class="keyword">if</span>(tree[x].l==tree[x].r)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">int</span> mid=(l+r)/<span class="number">2</span>;</div><div class="line">    build(l,mid,x&lt;&lt;<span class="number">1</span>);</div><div class="line">    build(mid+<span class="number">1</span>,r,x&lt;&lt;<span class="number">1</span>|<span class="number">1</span>);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> rp)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span>(tree[x].l==tree[x].r)</div><div class="line">    &#123;</div><div class="line">        tree[x].rp++;</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">int</span> mid=(tree[x].l+tree[x].r)/<span class="number">2</span>;</div><div class="line">    <span class="keyword">if</span>(rp&lt;=mid)</div><div class="line">        update(x&lt;&lt;<span class="number">1</span>,rp);</div><div class="line">    <span class="keyword">else</span></div><div class="line">        update(x&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,rp);</div><div class="line">    tree[x].rp=tree[x&lt;&lt;<span class="number">1</span>].rp+tree[x&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].rp;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> kk)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span>(tree[x].l==tree[x].r)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> tree[x].l;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(tree[x].rp&lt;kk) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    <span class="keyword">if</span>(tree[x&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].rp&gt;=kk)</div><div class="line">        <span class="keyword">return</span> query(x&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,kk);</div><div class="line">    <span class="keyword">else</span> <span class="keyword">return</span> query(x&lt;&lt;<span class="number">1</span>,kk-tree[x&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].rp);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</div><div class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;k&gt;&gt;m)</div><div class="line">    &#123;</div><div class="line">        ans=<span class="number">0</span>;</div><div class="line">        sum[<span class="number">0</span>]=<span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">int</span> tmp;</div><div class="line">            <span class="built_in">cin</span>&gt;&gt;tmp;</div><div class="line">            sum[i]=tmp+sum[i<span class="number">-1</span>];</div><div class="line">            lr[i].clear();</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">int</span> l,r;</div><div class="line">            <span class="built_in">cin</span>&gt;&gt;l&gt;&gt;r;</div><div class="line">            lr[l].push_back(r);</div><div class="line">        &#125;</div><div class="line">        build(<span class="number">1</span>,n,<span class="number">1</span>);</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;lr[i].size();j++) update(<span class="number">1</span>,lr[i][j]);</div><div class="line">            <span class="keyword">int</span> pos=query(<span class="number">1</span>,k);</div><div class="line">            <span class="keyword">if</span>(pos) ans=max(ans,sum[pos]-sum[i<span class="number">-1</span>]);</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
       
@@ -423,22 +423,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">acm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">队训day6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">线段树</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">一些感想</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
@@ -455,11 +439,23 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">辗转相除法</a>
+                <a href="javascript:void(0)" class="js-tag color5">一些感想</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">快速幂</a>
+                <a href="javascript:void(0)" class="js-tag color4">acm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">队训day6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">线段树</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">辗转相除法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -467,11 +463,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">dfs</a>
+                <a href="javascript:void(0)" class="js-tag color4">bfs</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">bfs</a>
+                <a href="javascript:void(0)" class="js-tag color4">快速幂</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -496,6 +492,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">凸包</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">dfs</a>
               </li>
              
               <li class="article-tag-list-item">
