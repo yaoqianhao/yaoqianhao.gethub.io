@@ -157,6 +157,100 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-gethub博客建立的说明" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/24/gethub博客建立的说明/">gethub博客建立的说明</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/24/gethub博客建立的说明/" class="archive-article-date">
+  	<time datetime="2017-06-24T05:58:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<p>这是我在Win7环境下成功搭建的具体流程。<br>参考<a href="http://blog.csdn.net/working_harder/article/details/52437783" target="_blank" rel="external">http://blog.csdn.net/working_harder/article/details/52437783</a><br>需要的工具是<font color="red">git</font>以及<font color="red">Node.js</font></p>
+<font color="blue" size="5">首先环境搭建</font>
+
+<p>安装<font color="red">git</font> 直接上<font color="red">git</font>官网(<a href="http://git-scm.com" target="_blank" rel="external">http://git-scm.com</a>)<br>安装<font color="red">Node.js</font> 进入官网(<a href="https://nodejs.org/en/" target="_blank" rel="external">https://nodejs.org/en/</a>)</p>
+<font color="blue" size="5">在git下配置Hexo</font><br>首先<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g hexo-cli</div></pre></td></tr></table></figure><br><br>然后cd到Hexo文件夹（就是shell的用法）<br>依次执行<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo init</div><div class="line">npm install</div></pre></td></tr></table></figure><br><br>这样在这个文件夹内就创建好了博客的基础了<br>然后启动一下看看<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo server</div></pre></td></tr></table></figure><br><br>按照提示给的地址进去看看，<a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a><br>Ctrl+C退出。。。<br>如果要换主题的话就<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd theme</div><div class="line">git clone https://github.com/litten/hexo-theme-yilia.git</div></pre></td></tr></table></figure><br><br>相当于抄了人家的主题嘛。。。<br>之后到themes文件下找到hexo-theme-yilia文件夹，重命名为yilia<br>然后打开博客根目录下的配置文件<font color="grey">_config.yml</font><br><img src="/2017/06/24/gethub博客建立的说明/1.png" alt="1"><br>然后再s一下看看。。<br>这样本地的配置就完成了<br><br><font color="blue" size="5">在github上配置repository</font><br>github官网(<a href="http://www.github.com" target="_blank" rel="external">http://www.github.com</a>)<br>注册账户，然后找到Create a repository<br><img src="/2017/06/24/gethub博客建立的说明/2.png" alt="2"><br>注意仓库名必须是 <font color="grey">用户名.github.io</font>
+
+<p>之后配置SSH<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-keygen</div></pre></td></tr></table></figure></p>
+<p>回车三次后生成<font color="grey">id_rsa.pub</font><br>然后用vim打开<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim ~/.ssh/id_rsa.pub</div></pre></td></tr></table></figure></p>
+<p>用鼠标选中后按y复制。。<br>打开github后，点击Setting<br>需要从右上角的头像那里找到<br>然后找到SSH AND GPG keys<br><img src="/2017/06/24/gethub博客建立的说明/3.png" alt="3"><br>Add SSH<br>粘贴进去</p>
+<p>判断是否成功配置：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh -T git@github.com</div></pre></td></tr></table></figure></p>
+<p>看到<br><img src="/2017/06/24/gethub博客建立的说明/4.png" alt="4"><br>ok了</p>
+<p>然后打开本地根目录下的<font color="grey">_config.yml</font><br><img src="/2017/06/24/gethub博客建立的说明/5.png" alt="5"><br>改成自己的用户名即可</p>
+<p>之后在仓库页面打开settings<br>找到GitHub Pages<br><img src="/2017/06/24/gethub博客建立的说明/7.png" alt="7"><br>这里是关于github pages的简单说明，点击“Automatic page generator”按钮，即进入生成项目静态站点向导。</p>
+<p>然后就可以写博客了！！</p>
+<p>注意如果author那边想用中文的话务必打开根目录下<font color="grey">_config.yml</font><br><img src="/2017/06/24/gethub博客建立的说明/6.png" alt="6"></p>
+<p>写博客方法就是<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo new "标题"</div></pre></td></tr></table></figure></p>
+<p>之后到source下找到文件开始编辑即可</p>
+<p>如果需要插图片的话<br>1 把<font color="grey">_config.yml</font>里的post_asset_folder:这个选项设置为true</p>
+<p>2 在你的hexo目录下执行这样一句话<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-asset-image --save</div></pre></td></tr></table></figure></p>
+<p>这是下载安装一个可以上传本地图片的插件</p>
+<p>然后会在_post文件夹里生成对应标题的文件夹，把图片放进去<br>在博客里用 <img src="/2017/06/24/gethub博客建立的说明/xxx.jpg" alt=""> 这样的格式引入图片即可，方括号内为替换的文字<br>写完后<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo g</div><div class="line">hexo d</div></pre></td></tr></table></figure></p>
+<p>即完成了发布。注意会有一点延迟。。</p>
+<p>更新于2017/6/24</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">github</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">环境配置</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/24/gethub博客建立的说明/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-poj2828" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -778,65 +872,6 @@
 
 
   
-    <article id="post-first-blog" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/21/first-blog/">first blog</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/21/first-blog/" class="archive-article-date">
-  	<time datetime="2017-06-21T12:53:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>非常激动的发了第一篇博客，目前计划把暑假做的题的思考都贴上来，之后把之前做过的一些题也贴上来，算是对acm的一次整理吧。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">一些感想</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/21/first-blog/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
@@ -953,14 +988,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">队训day6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">线段树</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
@@ -974,6 +1001,14 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">队训day6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">线段树</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1009,14 +1044,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">队训day1</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">dfs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">队训day10</a>
               </li>
              
@@ -1025,7 +1052,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">队训day1</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">bfs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">dfs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1074,6 +1109,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">盛大游戏上大2017夏季赛</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">二分</a>
               </li>
              
               <li class="article-tag-list-item">

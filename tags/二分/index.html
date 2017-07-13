@@ -6,19 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>poj3254 | 姚乾浩的博客</title>
+  <title>Tag: 二分 | 姚乾浩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Corn Fields">
-<meta name="keywords" content="队训day10,状压dp">
-<meta property="og:type" content="article">
-<meta property="og:title" content="poj3254">
-<meta property="og:url" content="http://yoursite.com/2017/07/05/poj3254/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="姚乾浩的博客">
+<meta property="og:url" content="http://yoursite.com/tags/二分/index.html">
 <meta property="og:site_name" content="姚乾浩的博客">
-<meta property="og:description" content="Corn Fields">
-<meta property="og:updated_time" content="2017-07-05T06:49:59.805Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="poj3254">
-<meta name="twitter:description" content="Corn Fields">
+<meta name="twitter:title" content="姚乾浩的博客">
   
     <link rel="alternative" href="/atom.xml" title="姚乾浩的博客" type="application/atom+xml">
   
@@ -160,164 +155,68 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-poj3254" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      poj3254
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/07/13/shunewoj420/" class="archive-article-date">
+  	<time datetime="2017-07-13T06:28:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-13</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/07/13/shunewoj420/">shunewoj420</a>
     </h1>
   
 
-        
-        <a href="/2017/07/05/poj3254/" class="archive-article-date">
-  	<time datetime="2017-07-05T06:37:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><font color="gray" size="6">Corn Fields</font><br><a id="more"></a><br>Farmer John has purchased a lush new rectangular pasture composed of M by N (1 ≤ M ≤ 12; 1 ≤ N ≤ 12) square parcels. He wants to grow some yummy corn for the cows on a number of squares. Regrettably, some of the squares are infertile and can’t be planted. Canny FJ knows that the cows dislike eating close to each other, so when choosing which squares to plant, he avoids choosing squares that are adjacent; no two chosen squares share an edge. He has not yet made the final choice as to which squares to plant.<br>Being a very open-minded man, Farmer John wants to consider all possible options for how to choose the squares for planting. He is so open-minded that he considers choosing no squares as a valid option! Please help Farmer John determine the number of ways he can choose the squares to plant.<br>Input<br>Line 1: Two space-separated integers: M and N<br>Lines 2.. M+1: Line i+1 describes row i of the pasture with N space-separated integers indicating whether a square is fertile (1 for fertile, 0 for infertile)<br>Output<br>Line 1: One integer: the number of ways that FJ can choose the squares modulo 100,000,000.<br>Sample Input<br>2 3<br>1 1 1<br>0 1 0<br>Sample Output<br>9</p>
-<p>Hint<br>Number the squares as follows:<br>1 2 3<br>4<br>There are four ways to plant only on one squares (1, 2, 3, or 4), three ways to plant on two squares (13, 14, or 34), 1 way to plant on three squares (134), and one way to plant on no squares. 4+3+1+1=9.<br>放硬币 1代表能放，0代表不能放<br>要求任意两枚不能相邻<br>状态压缩dp的入门题。。<br>利用二进制进行状态压缩  首先对每一行的情况取反码存下来，存在cur里<br>在枚举状态j时   判断j&amp;(j&lt;&lt;1) 表示不相邻  以及j&amp;cur[j] 表示符合题目中能放的情况<br>然后自底向上dp的思路来就ok了</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">int</span> cur[<span class="number">5000</span>];</div><div class="line"><span class="keyword">long</span> <span class="keyword">long</span> dp[<span class="number">13</span>][<span class="number">5000</span>];</div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">ok</span><span class="params">(<span class="keyword">int</span> x)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span>(x&amp;x&lt;&lt;<span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</div><div class="line">    <span class="keyword">int</span> n,m;</div><div class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m)</div><div class="line">    &#123;</div><div class="line">        <span class="built_in">memset</span>(dp,<span class="number">0</span>,<span class="keyword">sizeof</span>(dp));</div><div class="line">        <span class="keyword">int</span> total=<span class="number">1</span>;</div><div class="line">        <span class="keyword">long</span> <span class="keyword">long</span> sum=<span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=m;i++)</div><div class="line">            total=total&lt;&lt;<span class="number">1</span>|<span class="number">1</span>;</div><div class="line">        <span class="comment">//cout&lt;&lt;total&lt;&lt;endl;</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</div><div class="line">        &#123;</div><div class="line">            cur[i]=<span class="number">0</span>;</div><div class="line">            <span class="keyword">int</span> tmp;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=m;j++)</div><div class="line">            &#123;</div><div class="line">                <span class="built_in">cin</span>&gt;&gt;tmp;</div><div class="line">                <span class="keyword">if</span>(tmp==<span class="number">0</span>) cur[i]+=(<span class="number">1</span>&lt;&lt;(m-j));  <span class="comment">//cur[i]存的是取反的</span></div><div class="line">            &#125;</div><div class="line">            <span class="comment">//cout&lt;&lt;cur[i]&lt;&lt;endl;</span></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;=total;j++)</div><div class="line">            <span class="keyword">if</span>((cur[<span class="number">1</span>]&amp;j)==<span class="number">0</span>&amp;&amp;ok(j))</div><div class="line">            &#123;</div><div class="line">                dp[<span class="number">1</span>][j]=<span class="number">1</span>;</div><div class="line">                <span class="comment">//cout&lt;&lt;j&lt;&lt;endl;</span></div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span> dp[<span class="number">1</span>][j]=<span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;=total;j++)</div><div class="line">            &#123;</div><div class="line">                 <span class="keyword">if</span>((cur[i]&amp;j)==<span class="number">0</span>&amp;&amp;ok(j))</div><div class="line">                 &#123;</div><div class="line">                     <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;=total;k++)</div><div class="line">                     &#123;</div><div class="line">                         <span class="keyword">if</span>((k&amp;j)==<span class="number">0</span>)</div><div class="line">                         &#123;</div><div class="line">                             dp[i][j]=(dp[i][j]+dp[i<span class="number">-1</span>][k])%<span class="number">100000000</span>;</div><div class="line">                             <span class="comment">//cout&lt;&lt;j&lt;&lt;" "&lt;&lt;k&lt;&lt;" "&lt;&lt;dp[i-1][k]&lt;&lt;endl;</span></div><div class="line">                         &#125;</div><div class="line">                     &#125;</div><div class="line">                 &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;=total;j++)</div><div class="line">            sum=(sum+dp[n][j])%<span class="number">100000000</span>;</div><div class="line">        <span class="built_in">cout</span>&lt;&lt;sum&lt;&lt;<span class="built_in">endl</span>;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">队训day10</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">贪心</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">状压dp</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">盛大游戏上大2017夏季赛</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">二分</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/07/05/poj3254/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2017/07/06/hdu1423/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          hdu1423
-        
-      </div>
-    </a>
   
   
-    <a href="/2017/07/02/poj2677/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">poj2677</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
+    
 
 
           </div>
@@ -340,9 +239,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
