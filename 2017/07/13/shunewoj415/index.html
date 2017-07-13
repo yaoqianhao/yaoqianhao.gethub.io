@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 计算几何 | 姚乾浩的博客</title>
+  <title>shunewoj415 | 姚乾浩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="姚乾浩的博客">
-<meta property="og:url" content="http://yoursite.com/tags/计算几何/index.html">
+  <meta name="description" content="A序列">
+<meta name="keywords" content="dp,盛大游戏上大2017夏季赛,二分,LIS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shunewoj415">
+<meta property="og:url" content="http://yoursite.com/2017/07/13/shunewoj415/index.html">
 <meta property="og:site_name" content="姚乾浩的博客">
+<meta property="og:description" content="A序列">
+<meta property="og:updated_time" content="2017-07-13T14:15:57.454Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="姚乾浩的博客">
+<meta name="twitter:title" content="shunewoj415">
+<meta name="twitter:description" content="A序列">
   
     <link rel="alternative" href="/atom.xml" title="姚乾浩的博客" type="application/atom+xml">
   
@@ -155,72 +160,164 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-shunewoj415" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/25/poj1113/" class="archive-article-date">
-  	<time datetime="2017-06-25T04:02:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-25</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/25/poj1113/">poj1113</a>
+    <h1 class="article-title" itemprop="name">
+      shunewoj415
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/07/13/shunewoj415/" class="archive-article-date">
+  	<time datetime="2017-07-13T14:09:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><font color="gray" size="6">A序列</font><br><a id="more"></a><br> 描述<br>如果一个序列有奇数个正整数组成，不妨令此序列为a1,a2,a3,…,a2∗k+1(0&lt;=k)，并且a1,a2…ak+1是一个严格递增的序列，ak+1,ak+2,…,a2∗k+1,是一个严格递减的序列，则称此序列是A序列。<br>比如1 2 5 4 3就是一个A序列。<br>现在Jazz有一个长度为n的数组，他希望让你求出这个数组所有满足A序列定义的子序列里面最大的那个长度。（子序列可以不连续）<br>比如1 2 5 4 3 6 7 8 9，最长的A序列子串是1 2 5 4 3。<br>输入<br>多组输入，每组两行。<br>第一行是n，表示给的数组的长度。<br>第二行有n个数(int范围)，即给你的数组。<br>1&lt;=n&lt;=500000。<br>输出<br>每组输入输出一行，即最长的A序列子串的长度。<br>样例输入1 复制<br>9<br>1 2 5 4 3 6 7 8 9<br>样例输出1<br>5</p>
+<p>分别正序逆序求一遍LIS，然后遍历每个位置，看看前后LIS比较小的那个x2-1.。这样子搞一下<br>这题让我学会了一手nlogn LIS</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">int</span> n;</div><div class="line"><span class="keyword">int</span> num[<span class="number">500005</span>];</div><div class="line"><span class="keyword">int</span> lis[<span class="number">500005</span>];</div><div class="line"><span class="keyword">int</span> l[<span class="number">500005</span>],r[<span class="number">500005</span>];</div><div class="line"><span class="keyword">int</span> length=<span class="number">0</span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">binarysearch</span><span class="params">(<span class="keyword">int</span> now)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> l=<span class="number">1</span>,r=length;</div><div class="line">    <span class="keyword">while</span>(l&lt;r)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">int</span> mid=(l+r)/<span class="number">2</span>;</div><div class="line">        <span class="keyword">if</span>(now&gt;lis[mid])</div><div class="line">            l=mid+<span class="number">1</span>;</div><div class="line">        <span class="keyword">else</span> r=mid;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> l;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">getlisl</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    length=<span class="number">1</span>;</div><div class="line">    lis[<span class="number">1</span>]=num[<span class="number">1</span>];</div><div class="line">    l[<span class="number">1</span>]=<span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">int</span> pos=binarysearch(num[i]);</div><div class="line">        <span class="keyword">if</span>(pos==length)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span>(lis[pos]&lt;num[i])</div><div class="line">            &#123;</div><div class="line">                length++;</div><div class="line">                l[i]=length;</div><div class="line">                lis[length]=num[i];</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span></div><div class="line">            &#123;</div><div class="line">                l[i]=pos;</div><div class="line">                lis[pos]=num[i];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span></div><div class="line">        &#123;</div><div class="line">            l[i]=pos;</div><div class="line">            <span class="keyword">if</span>(lis[pos]&gt;num[i])</div><div class="line">                lis[pos]=num[i];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">getlisr</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    length=<span class="number">1</span>;</div><div class="line">    lis[<span class="number">1</span>]=num[<span class="number">1</span>];</div><div class="line">    r[<span class="number">1</span>]=<span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">int</span> pos=binarysearch(num[i]);</div><div class="line">        <span class="keyword">if</span>(pos==length)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span>(lis[pos]&lt;num[i])</div><div class="line">            &#123;</div><div class="line">                length++;</div><div class="line">                r[i]=length;</div><div class="line">                lis[length]=num[i];</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span></div><div class="line">            &#123;</div><div class="line">                r[i]=pos;</div><div class="line">                lis[pos]=num[i];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span></div><div class="line">        &#123;</div><div class="line">            r[i]=pos;</div><div class="line">            <span class="keyword">if</span>(lis[pos]&gt;num[i])</div><div class="line">                lis[pos]=num[i];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</div><div class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;n)</div><div class="line">    &#123;</div><div class="line">        <span class="comment">//cout&lt;&lt;x&lt;&lt;endl;</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</div><div class="line">        &#123;</div><div class="line">            <span class="comment">//l[i]=1e9;</span></div><div class="line">            <span class="comment">//r[i]=1e9;</span></div><div class="line">            <span class="built_in">cin</span>&gt;&gt;num[i];</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        length=<span class="number">0</span>;</div><div class="line">        getlisl();</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n/<span class="number">2</span>;i++)</div><div class="line">            swap(num[i],num[n-i+<span class="number">1</span>]);</div><div class="line">        <span class="comment">//for(int i=1;i&lt;=n;i++)</span></div><div class="line">        <span class="comment">//    cout&lt;&lt;num[i]&lt;&lt;" ";</span></div><div class="line">        <span class="comment">//cout&lt;&lt;endl;</span></div><div class="line">        length=<span class="number">0</span>;</div><div class="line">        getlisr();</div><div class="line">        <span class="keyword">int</span> ma=<span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</div><div class="line">        <span class="comment">//&#123;</span></div><div class="line">        <span class="comment">//    cout&lt;&lt;l[i]&lt;&lt;" ";</span></div><div class="line">            ma=max(ma,min(l[i],r[n-i+<span class="number">1</span>])*<span class="number">2</span><span class="number">-1</span>);</div><div class="line">        <span class="comment">//&#125;</span></div><div class="line">        <span class="comment">//cout&lt;&lt;endl;</span></div><div class="line">        <span class="comment">//for(int i=1;i&lt;=n;i++)</span></div><div class="line">        <span class="comment">//    cout&lt;&lt;r[i]&lt;&lt;" ";</span></div><div class="line">        <span class="comment">//cout&lt;&lt;endl;</span></div><div class="line">        <span class="built_in">cout</span>&lt;&lt;ma&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">acm</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">dp</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">队训day5</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">盛大游戏上大2017夏季赛</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">计算几何</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">二分</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">凸包</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LIS</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/07/13/shunewoj415/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2017/07/13/shunewoj420/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">shunewoj420</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-    
+  
+
+  
 
 
           </div>
@@ -243,9 +340,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
