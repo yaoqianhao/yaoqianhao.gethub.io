@@ -6,19 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>poj3041 | 姚乾浩的博客</title>
+  <title>Tag: ISAP | 姚乾浩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Asteroids">
-<meta name="keywords" content="acm,队训day11,二分图匹配,匈牙利算法">
-<meta property="og:type" content="article">
-<meta property="og:title" content="poj3041">
-<meta property="og:url" content="http://yoursite.com/2017/07/06/poj3041/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="姚乾浩的博客">
+<meta property="og:url" content="http://yoursite.com/tags/ISAP/index.html">
 <meta property="og:site_name" content="姚乾浩的博客">
-<meta property="og:description" content="Asteroids">
-<meta property="og:updated_time" content="2017-07-18T02:44:37.629Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="poj3041">
-<meta name="twitter:description" content="Asteroids">
+<meta name="twitter:title" content="姚乾浩的博客">
   
     <link rel="alternative" href="/atom.xml" title="姚乾浩的博客" type="application/atom+xml">
   
@@ -160,64 +155,36 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-poj3041" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      poj3041
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/07/21/hdu4292/" class="archive-article-date">
+  	<time datetime="2017-07-21T06:59:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-21</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/07/21/hdu4292/">hdu4292</a>
     </h1>
   
 
-        
-        <a href="/2017/07/06/poj3041/" class="archive-article-date">
-  	<time datetime="2017-07-06T02:32:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><font color="gray" size="6">Asteroids</font><br><a id="more"></a><br>Bessie wants to navigate her spaceship through a dangerous asteroid field in the shape of an N x N grid (1 &lt;= N &lt;= 500). The grid contains K asteroids (1 &lt;= K &lt;= 10,000), which are conveniently located at the lattice points of the grid.<br>Fortunately, Bessie has a powerful weapon that can vaporize all the asteroids in any given row or column of the grid with a single shot.This weapon is quite expensive, so she wishes to use it sparingly.Given the location of all the asteroids in the field, find the minimum number of shots Bessie needs to fire to eliminate all of the asteroids.<br>Input</p>
-<ul>
-<li>Line 1: Two integers N and K, separated by a single space.</li>
-<li>Lines 2..K+1: Each line contains two space-separated integers R and C (1 &lt;= R, C &lt;= N) denoting the row and column coordinates of an asteroid, respectively.<br>Output</li>
-<li>Line 1: The integer representing the minimum number of times Bessie must shoot.<br>Sample Input<br>3 4<br>1 1<br>1 3<br>2 2<br>3 2</li>
-</ul>
-<p>Sample Output<br>2</p>
-<p>Hint<br>INPUT DETAILS:<br>The following diagram represents the data, where “X” is an asteroid and “.” is empty space:<br>X.X<br>.X.<br>.X.<br>OUTPUT DETAILS:<br>Bessie may fire across row 1 to destroy the asteroids at (1,1) and (1,3), and then she may fire down column 2 to destroy the asteroids at (2,2) and (3,2). </p>
-<p>每次能消灭一整行或者一整列，求最小次数<br>二分图最小点覆盖，即求最大匹配数</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">int</span> n,k,ans;</div><div class="line"><span class="keyword">int</span> tr[<span class="number">505</span>],tl[<span class="number">505</span>],pre[<span class="number">505</span>];</div><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ltr[<span class="number">505</span>];</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    ans=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n;i++)</div><div class="line">        ltr[i].clear();</div><div class="line">    <span class="built_in">memset</span>(tr,<span class="number">-1</span>,<span class="keyword">sizeof</span>(tr));</div><div class="line">    <span class="built_in">memset</span>(tl,<span class="number">-1</span>,<span class="keyword">sizeof</span>(tl));</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">bfs</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</div><div class="line">    &#123;</div><div class="line">        <span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q;</div><div class="line">        <span class="keyword">if</span>(tr[i]==<span class="number">-1</span>)</div><div class="line">        &#123;</div><div class="line">            <span class="built_in">memset</span>(pre,<span class="number">-1</span>,<span class="keyword">sizeof</span>(pre));</div><div class="line">            q.push(i);</div><div class="line">            <span class="keyword">while</span>(!q.empty())</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">int</span> u=q.front();</div><div class="line">                q.pop();</div><div class="line">                <span class="keyword">int</span> v,flag=<span class="number">-1</span>;</div><div class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;ltr[u].size();j++)</div><div class="line">                &#123;</div><div class="line">                    v=ltr[u][j];</div><div class="line">                    <span class="keyword">if</span>(tl[v]==<span class="number">-1</span>)</div><div class="line">                    &#123;</div><div class="line">                        flag=v;</div><div class="line">                        <span class="keyword">break</span>;</div><div class="line">                    &#125;</div><div class="line">                    <span class="keyword">else</span> <span class="keyword">if</span>(pre[v]==<span class="number">-1</span>)</div><div class="line">                    &#123;</div><div class="line">                        pre[v]=u;</div><div class="line">                        q.push(tl[v]);</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">if</span>(flag!=<span class="number">-1</span>)</div><div class="line">                &#123;</div><div class="line">                    ans++;</div><div class="line">                    <span class="keyword">int</span> tmp;</div><div class="line">                    <span class="keyword">while</span>(flag!=<span class="number">-1</span>)</div><div class="line">                    &#123;</div><div class="line">                        tmp=tr[u];</div><div class="line">                        tr[u]=flag;</div><div class="line">                        tl[flag]=u;</div><div class="line">                        <span class="keyword">if</span>(tmp==<span class="number">-1</span>)</div><div class="line">                            <span class="keyword">break</span>;</div><div class="line">                        u=pre[tmp];</div><div class="line">                        flag=tmp;</div><div class="line">                    &#125;</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;k)</div><div class="line">    &#123;</div><div class="line">        init();</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;k;i++)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">int</span> a,b;</div><div class="line">            <span class="built_in">cin</span>&gt;&gt;a&gt;&gt;b;</div><div class="line">            ltr[a].push_back(b);</div><div class="line">        &#125;</div><div class="line">        bfs();</div><div class="line">        <span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -227,112 +194,33 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">队训day11</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">队训day13</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二分图匹配</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">网络流</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">匈牙利算法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">ISAP</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/07/06/poj3041/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2017/07/07/poj3020/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          poj3020
-        
-      </div>
-    </a>
   
   
-    <a href="/2017/07/06/hdu2063/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">hdu2063</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
+    
 
 
           </div>
@@ -355,9 +243,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
