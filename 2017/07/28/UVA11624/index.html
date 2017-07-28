@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: acm | 姚乾浩的博客</title>
+  <title>UVA11624 | 姚乾浩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="姚乾浩的博客">
-<meta property="og:url" content="http://yoursite.com/tags/acm/page/7/index.html">
+  <meta name="description" content="Fire!">
+<meta name="keywords" content="acm,bfs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UVA11624">
+<meta property="og:url" content="http://yoursite.com/2017/07/28/UVA11624/index.html">
 <meta property="og:site_name" content="姚乾浩的博客">
+<meta property="og:description" content="Fire!">
+<meta property="og:updated_time" content="2017-07-28T08:45:55.328Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="姚乾浩的博客">
+<meta name="twitter:title" content="UVA11624">
+<meta name="twitter:description" content="Fire!">
   
     <link rel="alternative" href="/atom.xml" title="姚乾浩的博客" type="application/atom+xml">
   
@@ -155,274 +160,65 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-UVA11624" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      UVA11624
+    </h1>
+  
+
+        
+        <a href="/2017/07/28/UVA11624/" class="archive-article-date">
+  	<time datetime="2017-07-28T08:38:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-28</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><font color="gray" size="6">Fire!</font><br><a id="more"></a><br>Joe works in a maze.  Unfortunately, portions of the maze have caught on  re, and the owner of the maze neglected to create a fire escape plan. Help Joe escape the maze.<br>Given Joe’s location in the maze and which squares of the maze are on  re, you must determine whether Joe can exit the maze before the fire reaches him, and how fast he can do it.<br>Joe and the fire each move one square per minute, vertically or horizontally (not diagonally).  The fire spreads all four directions from each square that is on fire. Joe may exit the maze from any square that borders the edge of the maze. Neither Joe nor the fire may enter a square that is occupied by a wall.<br>Input<br>The  rest line of input contains a single integer, the number of test cases to follow.  The  rst line of each test case contains the two integers R and C,separated by spaces, with<br>1&lt;=R,C&lt;=1000. The following R lines of the test case each contain one row of the maze. Each of these lines contains exactly C characters, and each of these characters is one of:</p>
+<p>#, a wall<br>, a passable square<br>J, Joe’s initial position in the maze, which is a passable square<br>F, a square that is on fire<br>There will be exactly one J in each test case.<br>Output<br>For each test case, output a single line containing `<br>IMPOSSIBLE<br>if Joe cannot exit the maze before the fire reaches him, or an integer giving the earliest time Joe can safely exit the maze, in minutes.<br>Sample Input<br>2<br>4 4</p>
+<p>####</p>
+<p>#JF#</p>
+<p>#..#</p>
+<p>#..#<br>3 3</p>
+<p>###</p>
+<p>#J.</p>
+<p>#.F<br>Sample Output<br>3<br>IMPOSSIBLE</p>
+<p>这题很有趣，bfs，有可能有多个f点，bfs的时候先把所有f点放进去，把cost放到超过1e6，然后再把人放进去<br>这样子对于到边界的情况判断一下cost就可以知道是人到边还是火到边</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">int</span> vis[<span class="number">1001</span>][<span class="number">1001</span>];</div><div class="line"><span class="keyword">char</span> <span class="built_in">map</span>[<span class="number">1001</span>][<span class="number">1001</span>];</div><div class="line"><span class="keyword">int</span> n,m;</div><div class="line"><span class="keyword">int</span> jx,jy;</div><div class="line"><span class="keyword">int</span> fire[<span class="number">1001</span>*<span class="number">1001</span>+<span class="number">5</span>],fcnt=<span class="number">0</span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">input</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    fcnt=<span class="number">0</span>;</div><div class="line">    <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;m;j++)</div><div class="line">        &#123;</div><div class="line">            <span class="built_in">cin</span>&gt;&gt;<span class="built_in">map</span>[i][j];</div><div class="line">            vis[i][j]=<span class="number">-1</span>;</div><div class="line">            <span class="keyword">if</span>(<span class="built_in">map</span>[i][j]==<span class="string">'J'</span>)</div><div class="line">            &#123;</div><div class="line">                jx=i;</div><div class="line">                jy=j;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(<span class="built_in">map</span>[i][j]==<span class="string">'F'</span>)</div><div class="line">            &#123;</div><div class="line">                fire[fcnt++]=i*m+j;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">bfs</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> cost;</div><div class="line">    <span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;fcnt;i++)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">int</span> tx=fire[i]/m,ty=fire[i]%m;</div><div class="line">        vis[tx][ty]=<span class="number">1000005</span>;</div><div class="line">        q.push(fire[i]);</div><div class="line">    &#125;</div><div class="line">    vis[x][y]=<span class="number">1</span>;</div><div class="line">    q.push(x*m+y);</div><div class="line">    <span class="keyword">while</span>(!q.empty())</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">int</span> x=q.front();</div><div class="line">        q.pop();</div><div class="line">        <span class="keyword">int</span> nowx=x/m,nowy=x%m;</div><div class="line">        cost=vis[nowx][nowy];</div><div class="line">        <span class="keyword">if</span>(cost&lt;<span class="number">1000005</span>&amp;&amp;(nowx==<span class="number">0</span>||nowy==<span class="number">0</span>||nowx==n<span class="number">-1</span>||nowy==m<span class="number">-1</span>))</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">return</span> cost;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(nowx<span class="number">-1</span>&gt;=<span class="number">0</span>&amp;&amp;vis[nowx<span class="number">-1</span>][nowy]==<span class="number">-1</span>&amp;&amp;<span class="built_in">map</span>[nowx<span class="number">-1</span>][nowy]!=<span class="string">'#'</span>)</div><div class="line">        &#123;</div><div class="line">            vis[nowx<span class="number">-1</span>][nowy]=cost+<span class="number">1</span>;</div><div class="line">            q.push((nowx<span class="number">-1</span>)*m+nowy);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(nowy<span class="number">-1</span>&gt;=<span class="number">0</span>&amp;&amp;vis[nowx][nowy<span class="number">-1</span>]==<span class="number">-1</span>&amp;&amp;<span class="built_in">map</span>[nowx][nowy<span class="number">-1</span>]!=<span class="string">'#'</span>)</div><div class="line">        &#123;</div><div class="line">            vis[nowx][nowy<span class="number">-1</span>]=cost+<span class="number">1</span>;</div><div class="line">            q.push(nowx*m+nowy<span class="number">-1</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(nowx+<span class="number">1</span>&lt;n&amp;&amp;vis[nowx+<span class="number">1</span>][nowy]==<span class="number">-1</span>&amp;&amp;<span class="built_in">map</span>[nowx+<span class="number">1</span>][nowy]!=<span class="string">'#'</span>)</div><div class="line">        &#123;</div><div class="line">            vis[nowx+<span class="number">1</span>][nowy]=cost+<span class="number">1</span>;</div><div class="line">            q.push((nowx+<span class="number">1</span>)*m+nowy);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(nowy+<span class="number">1</span>&lt;m&amp;&amp;vis[nowx][nowy+<span class="number">1</span>]==<span class="number">-1</span>&amp;&amp;<span class="built_in">map</span>[nowx][nowy+<span class="number">1</span>]!=<span class="string">'#'</span>)</div><div class="line">        &#123;</div><div class="line">            vis[nowx][nowy+<span class="number">1</span>]=cost+<span class="number">1</span>;</div><div class="line">            q.push(nowx*m+nowy+<span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> t;</div><div class="line">    <span class="built_in">cin</span>&gt;&gt;t;</div><div class="line">    <span class="keyword">while</span>(t--)</div><div class="line">    &#123;</div><div class="line">        input();</div><div class="line">        <span class="keyword">int</span> ans=bfs(jx,jy);</div><div class="line">        <span class="keyword">if</span>(ans==<span class="number">-1</span>) <span class="built_in">cout</span>&lt;&lt;<span class="string">"IMPOSSIBLE"</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">        <span class="keyword">else</span> <span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/25/hdu5700/" class="archive-article-date">
-  	<time datetime="2017-06-25T07:24:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/25/hdu5700/">hdu5700</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">acm</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">队训day6</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">线段树</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/25/poj1113/" class="archive-article-date">
-  	<time datetime="2017-06-25T04:02:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/25/poj1113/">poj1113</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">acm</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">队训day5</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">计算几何</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">凸包</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/24/codeforces-85D/" class="archive-article-date">
-  	<time datetime="2017-06-24T13:38:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/24/codeforces-85D/">codeforces 85D</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">acm</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">队训day6</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">线段树</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/24/poj2528/" class="archive-article-date">
-  	<time datetime="2017-06-24T09:22:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/24/poj2528/">poj2528</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">acm</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">队训day6</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">线段树</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">离散化</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/24/poj2828/" class="archive-article-date">
-  	<time datetime="2017-06-24T05:53:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/24/poj2828/">poj2828</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">acm</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">队训day6</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">线段树</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/21/hdu1495/" class="archive-article-date">
-  	<time datetime="2017-06-21T14:30:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/21/hdu1495/">hdu1495</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -434,214 +230,92 @@
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">bfs</a>
         		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">队训day1</a>
-        		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/07/28/UVA11624/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/21/hdu1241/" class="archive-article-date">
-  	<time datetime="2017-06-21T14:26:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-21</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/21/hdu1241/">hdu1241</a>
-    </h1>
+  
+    <a href="/2017/07/28/fzu2150/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">fzu2150</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">acm</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">队训day1</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">dfs</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/21/poj3984/" class="archive-article-date">
-  	<time datetime="2017-06-21T14:23:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/21/poj3984/">poj3984</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">acm</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">bfs</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">队训day1</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/21/poj3126/" class="archive-article-date">
-  	<time datetime="2017-06-21T14:16:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/21/poj3126/">poj3126</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">acm</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">队训day1</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">dfs</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/21/poj1426/" class="archive-article-date">
-  	<time datetime="2017-06-21T14:08:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/21/poj1426/">poj1426</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">acm</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">队训day1</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">dfs</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/tags/acm/page/6/">&laquo; Prev</a><a class="page-number" href="/tags/acm/">1</a><span class="space">&hellip;</span><a class="page-number" href="/tags/acm/page/5/">5</a><a class="page-number" href="/tags/acm/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/tags/acm/page/8/">8</a><a class="extend next" rel="next" href="/tags/acm/page/8/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -665,9 +339,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
