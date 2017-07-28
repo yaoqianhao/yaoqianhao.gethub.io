@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>姚乾浩的博客</title>
+  <title>fzu2150 | 姚乾浩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="姚乾浩的博客">
-<meta property="og:url" content="http://yoursite.com/page/6/index.html">
+  <meta name="description" content="Fire Game">
+<meta name="keywords" content="acm,bfs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="fzu2150">
+<meta property="og:url" content="http://yoursite.com/2017/07/28/fzu2150/index.html">
 <meta property="og:site_name" content="姚乾浩的博客">
+<meta property="og:description" content="Fire Game">
+<meta property="og:updated_time" content="2017-07-28T08:14:46.535Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="姚乾浩的博客">
+<meta name="twitter:title" content="fzu2150">
+<meta name="twitter:description" content="Fire Game">
   
     <link rel="alternative" href="/atom.xml" title="姚乾浩的博客" type="application/atom+xml">
   
@@ -155,34 +160,58 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-poj1042" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-fzu2150" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/29/poj1042/">poj1042</a>
+    <h1 class="article-title" itemprop="name">
+      fzu2150
     </h1>
   
 
         
-        <a href="/2017/06/29/poj1042/" class="archive-article-date">
-  	<time datetime="2017-06-29T04:28:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-29</time>
+        <a href="/2017/07/28/fzu2150/" class="archive-article-date">
+  	<time datetime="2017-07-28T08:09:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><font color="gray" size="6">Gone Fishing</font><br></p>
-        
-          <a class="article-more-a" href="/2017/06/29/poj1042/#more">more >></a>
-        
+        <p><font color="gray" size="6">Fire Game</font><br><a id="more"></a><br>Fat brother and Maze are playing a kind of special (hentai) game on an N*M board (N rows, M columns). At the beginning, each grid of this board is consisting of grass or just empty and then they start to fire all the grass. Firstly they choose two grids which are consisting of grass and set fire. As we all know, the fire can spread among the grass. If the grid (x, y) is firing at time t, the grid which is adjacent to this grid will fire at time t+1 which refers to the grid (x+1, y), (x-1, y), (x, y+1), (x, y-1). This process ends when no new grid get fire. If then all the grid which are consisting of grass is get fired, Fat brother and Maze will stand in the middle of the grid and playing a MORE special (hentai) game. (Maybe it’s the OOXX game which decrypted in the last problem, who knows.)<br>You can assume that the grass in the board would never burn out and the empty grid would never get fire.<br>Note that the two grids they choose can be the same.<br>Input<br>The first line of the date is an integer T, which is the number of the text cases.<br>Then T cases follow, each case contains two integers N and M indicate the size of the board. Then goes N line, each line with M character shows the board. “#” Indicates the grass. You can assume that there is at least one grid which is consisting of grass in the board.<br>1 &lt;= T &lt;=100, 1 &lt;= n &lt;=10, 1 &lt;= m &lt;=10<br>Output<br>For each case, output the case number first, if they can play the MORE special (hentai) game (fire all the grass), output the minimal time they need to wait after they set fire, otherwise just output -1. See the sample input and output for more details.<br>Sample Input<br>4<br>3 3<br>.#.</p>
+<p>###<br>.#.<br>3 3<br>.#.</p>
+<p>#.#<br>.#.<br>3 3<br>…</p>
+<p>#.#<br>…<br>3 3</p>
+<p>###<br>..#</p>
+<p>#.#<br>Sample Output<br>Case 1: 1<br>Case 2: -1<br>Case 3: 0<br>Case 4: 2</p>
+<p>这题蛮有意思的:两个人同时放火烧#(任意选位置),要求如果能烧完,求最短时间;如果不能输出-1</p>
+<p>因为数据量只有10..所以首先暴力求连通块,超过二就是-1;然后暴力bfs,把两个点同时放进去bfs,枚举所有组合,注意两个人可以选同一个点<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">int</span> n,m;</div><div class="line"><span class="keyword">int</span> t;</div><div class="line"><span class="keyword">char</span> <span class="built_in">map</span>[<span class="number">12</span>][<span class="number">12</span>];</div><div class="line"><span class="keyword">int</span> vis[<span class="number">12</span>][<span class="number">12</span>];</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">input</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="built_in">memset</span>(vis,<span class="number">-1</span>,<span class="keyword">sizeof</span>(vis));</div><div class="line">    <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;m;j++)</div><div class="line">            <span class="built_in">cin</span>&gt;&gt;<span class="built_in">map</span>[i][j];</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">bfs</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> cost;</div><div class="line">    <span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q;</div><div class="line">    vis[x][y]=<span class="number">0</span>;</div><div class="line">    q.push(x*m+y);</div><div class="line">    <span class="keyword">while</span>(!q.empty())</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">int</span> x=q.front();</div><div class="line">        q.pop();</div><div class="line">        <span class="keyword">int</span> nowx=x/m,nowy=x%m;</div><div class="line">        cost=vis[nowx][nowy];</div><div class="line">        <span class="keyword">if</span>(nowx<span class="number">-1</span>&gt;=<span class="number">0</span>&amp;&amp;vis[nowx<span class="number">-1</span>][nowy]==<span class="number">-1</span>&amp;&amp;<span class="built_in">map</span>[nowx<span class="number">-1</span>][nowy]==<span class="string">'#'</span>)</div><div class="line">        &#123;</div><div class="line">            vis[nowx<span class="number">-1</span>][nowy]=cost+<span class="number">1</span>;</div><div class="line">            q.push((nowx<span class="number">-1</span>)*m+nowy);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(nowy<span class="number">-1</span>&gt;=<span class="number">0</span>&amp;&amp;vis[nowx][nowy<span class="number">-1</span>]==<span class="number">-1</span>&amp;&amp;<span class="built_in">map</span>[nowx][nowy<span class="number">-1</span>]==<span class="string">'#'</span>)</div><div class="line">        &#123;</div><div class="line">            vis[nowx][nowy<span class="number">-1</span>]=cost+<span class="number">1</span>;</div><div class="line">            q.push(nowx*m+nowy<span class="number">-1</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(nowx+<span class="number">1</span>&lt;n&amp;&amp;vis[nowx+<span class="number">1</span>][nowy]==<span class="number">-1</span>&amp;&amp;<span class="built_in">map</span>[nowx+<span class="number">1</span>][nowy]==<span class="string">'#'</span>)</div><div class="line">        &#123;</div><div class="line">            vis[nowx+<span class="number">1</span>][nowy]=cost+<span class="number">1</span>;</div><div class="line">            q.push((nowx+<span class="number">1</span>)*m+nowy);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(nowy+<span class="number">1</span>&lt;m&amp;&amp;vis[nowx][nowy+<span class="number">1</span>]==<span class="number">-1</span>&amp;&amp;<span class="built_in">map</span>[nowx][nowy+<span class="number">1</span>]==<span class="string">'#'</span>)</div><div class="line">        &#123;</div><div class="line">            vis[nowx][nowy+<span class="number">1</span>]=cost+<span class="number">1</span>;</div><div class="line">            q.push(nowx*m+nowy+<span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> cost;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">bfs</span><span class="params">(<span class="keyword">int</span> x1,<span class="keyword">int</span> y1,<span class="keyword">int</span> x2,<span class="keyword">int</span> y2)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> cost;</div><div class="line">    <span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q;</div><div class="line">    vis[x1][y1]=<span class="number">0</span>;</div><div class="line">    vis[x2][y2]=<span class="number">0</span>;</div><div class="line">    q.push(x1*m+y1);</div><div class="line">    q.push(x2*m+y2);</div><div class="line">    <span class="keyword">while</span>(!q.empty())</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">int</span> x=q.front();</div><div class="line">        q.pop();</div><div class="line">        <span class="keyword">int</span> nowx=x/m,nowy=x%m;</div><div class="line">        cost=vis[nowx][nowy];</div><div class="line">        <span class="keyword">if</span>(nowx<span class="number">-1</span>&gt;=<span class="number">0</span>&amp;&amp;vis[nowx<span class="number">-1</span>][nowy]==<span class="number">-1</span>&amp;&amp;<span class="built_in">map</span>[nowx<span class="number">-1</span>][nowy]==<span class="string">'#'</span>)</div><div class="line">        &#123;</div><div class="line">            vis[nowx<span class="number">-1</span>][nowy]=cost+<span class="number">1</span>;</div><div class="line">            q.push((nowx<span class="number">-1</span>)*m+nowy);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(nowy<span class="number">-1</span>&gt;=<span class="number">0</span>&amp;&amp;vis[nowx][nowy<span class="number">-1</span>]==<span class="number">-1</span>&amp;&amp;<span class="built_in">map</span>[nowx][nowy<span class="number">-1</span>]==<span class="string">'#'</span>)</div><div class="line">        &#123;</div><div class="line">            vis[nowx][nowy<span class="number">-1</span>]=cost+<span class="number">1</span>;</div><div class="line">            q.push(nowx*m+nowy<span class="number">-1</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(nowx+<span class="number">1</span>&lt;n&amp;&amp;vis[nowx+<span class="number">1</span>][nowy]==<span class="number">-1</span>&amp;&amp;<span class="built_in">map</span>[nowx+<span class="number">1</span>][nowy]==<span class="string">'#'</span>)</div><div class="line">        &#123;</div><div class="line">            vis[nowx+<span class="number">1</span>][nowy]=cost+<span class="number">1</span>;</div><div class="line">            q.push((nowx+<span class="number">1</span>)*m+nowy);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(nowy+<span class="number">1</span>&lt;m&amp;&amp;vis[nowx][nowy+<span class="number">1</span>]==<span class="number">-1</span>&amp;&amp;<span class="built_in">map</span>[nowx][nowy+<span class="number">1</span>]==<span class="string">'#'</span>)</div><div class="line">        &#123;</div><div class="line">            vis[nowx][nowy+<span class="number">1</span>]=cost+<span class="number">1</span>;</div><div class="line">            q.push(nowx*m+nowy+<span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> cost;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</div><div class="line">    <span class="built_in">cin</span>&gt;&gt;t;</div><div class="line">    <span class="keyword">int</span> icase=<span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span>(t--)</div><div class="line">    &#123;</div><div class="line">        icase++;</div><div class="line">        input();</div><div class="line">        <span class="keyword">int</span> mi=<span class="number">500</span>*<span class="number">500</span>;</div><div class="line">        <span class="keyword">int</span> cnt=<span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;m;j++)</div><div class="line">                <span class="keyword">if</span>(<span class="built_in">map</span>[i][j]==<span class="string">'#'</span>&amp;&amp;vis[i][j]==<span class="number">-1</span>)</div><div class="line">                &#123;</div><div class="line">                    bfs(i,j);</div><div class="line">                    cnt++;</div><div class="line">                &#125;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;m;j++)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">if</span>(<span class="built_in">map</span>[i][j]==<span class="string">'#'</span>)</div><div class="line">                &#123;</div><div class="line">                    <span class="keyword">for</span>(<span class="keyword">int</span> k=i;k&lt;n;k++)</div><div class="line">                    &#123;</div><div class="line">                        <span class="keyword">for</span>(<span class="keyword">int</span> l=<span class="number">0</span>;l&lt;m;l++)</div><div class="line">                        &#123;</div><div class="line">                            <span class="keyword">if</span>(k==i&amp;&amp;l&lt;j) <span class="keyword">continue</span>;</div><div class="line">                            <span class="keyword">if</span>(<span class="built_in">map</span>[k][l]==<span class="string">'#'</span>)</div><div class="line">                            &#123;</div><div class="line">                                <span class="built_in">memset</span>(vis,<span class="number">-1</span>,<span class="keyword">sizeof</span>(vis));</div><div class="line">                                <span class="keyword">int</span> tmp=bfs(i,j,k,l);</div><div class="line">                                <span class="keyword">int</span> flag=<span class="number">1</span>;</div><div class="line">                                <span class="keyword">for</span>(<span class="keyword">int</span> ii=<span class="number">0</span>;ii&lt;n;ii++)</div><div class="line">                                    <span class="keyword">for</span>(<span class="keyword">int</span> jj=<span class="number">0</span>;jj&lt;m;jj++)</div><div class="line">                                        <span class="keyword">if</span>(<span class="built_in">map</span>[ii][jj]==<span class="string">'#'</span>&amp;&amp;vis[ii][jj]==<span class="number">-1</span>)</div><div class="line">                                            flag=<span class="number">0</span>;</div><div class="line">                                <span class="keyword">if</span>(flag) mi=min(tmp,mi);</div><div class="line">                            &#125;</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"Case "</span>&lt;&lt;icase&lt;&lt;<span class="string">": "</span>;</div><div class="line">        <span class="keyword">if</span>(cnt==<span class="number">0</span>) <span class="built_in">cout</span>&lt;&lt;<span class="number">0</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(cnt&gt;<span class="number">2</span>)</div><div class="line">            <span class="built_in">cout</span>&lt;&lt;<span class="number">-1</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">        <span class="keyword">else</span> <span class="built_in">cout</span>&lt;&lt;mi&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -197,11 +226,7 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">贪心</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">队训day8-9</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">bfs</a>
         		</li>
       		
 		</ul>
@@ -210,681 +235,74 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/29/poj1042/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/07/28/fzu2150/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
 
-
-
-
-
   
-    <article id="post-hdu4596" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/28/hdu4596/">hdu4596</a>
-    </h1>
   
-
-        
-        <a href="/2017/06/28/hdu4596/" class="archive-article-date">
-  	<time datetime="2017-06-28T14:00:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><font color="gray" size="6">Yet another end of the world</font><br></p>
-        
-          <a class="article-more-a" href="/2017/06/28/hdu4596/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">acm</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">队训day7</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数论</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">扩展欧几里德算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/28/hdu4596/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
+    <a href="/2017/07/28/hdu6050/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">hdu6050</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
-    <article id="post-poj1006" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/28/poj1006/">poj1006</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/28/poj1006/" class="archive-article-date">
-  	<time datetime="2017-06-28T11:15:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><font color="gray" size="6">Biorhythms</font><br></p>
-        
-          <a class="article-more-a" href="/2017/06/28/poj1006/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">acm</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">队训day7</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数论</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">扩展欧几里德算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">中国剩余定理</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/28/poj1006/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-hdu1211" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/28/hdu1211/">hdu1211</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/28/hdu1211/" class="archive-article-date">
-  	<time datetime="2017-06-28T09:34:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><font color="gray" size="6">RSA</font><br></p>
-        
-          <a class="article-more-a" href="/2017/06/28/hdu1211/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">acm</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">队训day7</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数论</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">辗转相除法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">快速幂</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/28/hdu1211/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-hdu1222" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/28/hdu1222/">hdu1222</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/28/hdu1222/" class="archive-article-date">
-  	<time datetime="2017-06-28T08:30:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><font color="gray" size="6">Wolf and Rabbit</font><br></p>
-        
-          <a class="article-more-a" href="/2017/06/28/hdu1222/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">acm</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">队训day7</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数论</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">辗转相除法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/28/hdu1222/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-poj2142" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/28/poj2142/">poj2142</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/28/poj2142/" class="archive-article-date">
-  	<time datetime="2017-06-28T08:14:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><font color="gray" size="6">The Balance</font><br></p>
-        
-          <a class="article-more-a" href="/2017/06/28/poj2142/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">acm</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">队训day7</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数论</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">扩展欧几里德算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/28/poj2142/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-A-B" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/28/A-B/">A/B</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/28/A-B/" class="archive-article-date">
-  	<time datetime="2017-06-28T06:47:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><font color="gray" size="6">A/B</font><br></p>
-        
-          <a class="article-more-a" href="/2017/06/28/A-B/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">acm</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">队训day7</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数论</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">扩展欧几里德算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">乘法逆元</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/28/A-B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-poj1061" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/28/poj1061/">poj1061</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/28/poj1061/" class="archive-article-date">
-  	<time datetime="2017-06-28T06:16:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><font color="gray" size="6">青蛙的约会</font><br></p>
-        
-          <a class="article-more-a" href="/2017/06/28/poj1061/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">acm</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">队训day7</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数论</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">扩展欧几里德算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/28/poj1061/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-poj2115" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/28/poj2115/">poj2115</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/28/poj2115/" class="archive-article-date">
-  	<time datetime="2017-06-28T05:40:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><font color="gray" size="6">C Looooops</font><br></p>
-        
-          <a class="article-more-a" href="/2017/06/28/poj2115/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">acm</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">队训day7</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数论</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">扩展欧几里德算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/28/poj2115/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-hdu5700" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/25/hdu5700/">hdu5700</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/25/hdu5700/" class="archive-article-date">
-  	<time datetime="2017-06-25T07:24:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><font color="gray" size="6">区间交</font><br></p>
-        
-          <a class="article-more-a" href="/2017/06/25/hdu5700/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">acm</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">队训day6</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">线段树</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/25/hdu5700/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
+</nav>
 
 
 
@@ -892,9 +310,10 @@
 
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
   
 
 
@@ -917,8 +336,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
