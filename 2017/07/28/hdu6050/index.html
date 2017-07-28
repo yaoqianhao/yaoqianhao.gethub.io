@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="姚乾浩的博客">
 <meta property="og:description" content="Funny Function">
 <meta property="og:image" content="http://yoursite.com/2017/07/28/hdu6050/1.jpg">
-<meta property="og:updated_time" content="2017-07-28T02:44:58.798Z">
+<meta property="og:updated_time" content="2017-07-28T04:07:51.793Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hdu6050">
 <meta name="twitter:description" content="Funny Function">
@@ -184,9 +184,9 @@
       
         <p><font color="gray" size="6">Funny Function</font><br><a id="more"></a><br>Problem Description<br>Function Fx,ysatisfies:<br><img src="/2017/07/28/hdu6050/1.jpg" alt="1"><br>For given integers N and M,calculate Fm,1 modulo 1e9+7.<br>Input<br>There is one integer T in the first line.<br>The next T lines,each line includes two integers N and M .<br>1&lt;=T&lt;=10000,1&lt;=N,M&lt;2^63.<br>Output<br>For each given N and M,print the answer in a single line.<br>Sample Input<br>2<br>2 2<br>3 3<br>Sample Output<br>2<br>33</p>
 <p>比赛的时候一开始看错题。。。推了半天矩阵好不容易做出来结果发现是错的。。。当时心态就崩了= =其实这个规律没那么难推<br>后来cjw推出了关系式 不过貌似好像是错的= = 反正写了半天也没写对。。即使后来貌似写的完全符合关系式了还是WA了。。<br>好吧今天来补题。。在cjw的基础上自己推了一下，和网上题解做法不太一样没有用到求乘法逆元，纯的矩阵快速幂<br>当然就是求了好几次幂，时间复杂度上常数有点大<br>总结规律：用excel打表得出的规律来<br>记要求结果为fm<br>对于fm<br>n为偶数：fm=(2^n-1)fm-1<br>n为奇数：fm=(2^n-1)fm-1-sigma(for i in range(1:n-2:2))2^i<br>首先无论n为奇为偶<br>都有f2关于n的数列：n=1,f2=1<br>                   n=2,f2=2<br>                   n=3,f2=5<br>                   n=4,f2=10<br>                   n=5,f2=21<br>                   …</p>
-<p>发现对于规律：n为奇数，f2(n)=2<em>f2(n-1)+1<br>              n为偶数，f2(n)=2</em>f2(n-1)<br>那么构建3阶矩阵：<br>2 1 0 n-1  1<br>0 0 1      0<br>0 1 0      1<br>算出第二个值</p>
+<p>发现对于规律：n为奇数，f2(n)=2<em>f2(n-1)+1<br>              n为偶数，f2(n)=2</em>f2(n-1)<br>那么构建3阶矩阵：<br>2 1 0 n-1  1<br>0 0 1  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  0<br>0 1 0   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1<br>算出第二个值</p>
 <p>那么<br>对于n为偶数就可以直接出来了</p>
-<p>对于n为奇数，需要求出后面减去的部分：<br>1 1 n/2 0<br>0 4     2<br>再套一次快速幂即可</p>
+<p>对于n为奇数，需要求出后面减去的部分：<br>1 1 n/2 0<br>0 4  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2<br>再套一次快速幂即可</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">long</span> <span class="keyword">long</span> M=<span class="number">1000000007</span>;</div><div class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">fastpow</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> ba,<span class="keyword">long</span> <span class="keyword">long</span> n)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">long</span> <span class="keyword">long</span> ans=<span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span>(n)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span>(n&amp;<span class="number">1</span>)</div><div class="line">            ans=(ans*ba)%M;</div><div class="line">        n=n/<span class="number">2</span>;</div><div class="line">        ba=(ba*ba)%M;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> ans;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">mul3</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> a[][<span class="number">3</span>],<span class="keyword">long</span> <span class="keyword">long</span> b[][<span class="number">3</span>],<span class="keyword">long</span> <span class="keyword">long</span> c[][<span class="number">3</span>])</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">long</span> <span class="keyword">long</span> tmp[<span class="number">3</span>][<span class="number">3</span>];</div><div class="line">    <span class="built_in">memset</span>(tmp,<span class="number">0</span>,<span class="keyword">sizeof</span>(tmp));</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">3</span>;i++)</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;<span class="number">3</span>;k++)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span>(a[i][k]==<span class="number">0</span>) <span class="keyword">continue</span>;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="number">3</span>;j++)</div><div class="line">            &#123;</div><div class="line">                tmp[i][j]=(tmp[i][j]+(a[i][k]*b[k][j])%M)%M;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">3</span>;i++)</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="number">3</span>;j++)</div><div class="line">        &#123;</div><div class="line">            c[i][j]=tmp[i][j]%M;</div><div class="line">        &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">mul2</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> a[][<span class="number">2</span>],<span class="keyword">long</span> <span class="keyword">long</span> b[][<span class="number">2</span>],<span class="keyword">long</span> <span class="keyword">long</span> c[][<span class="number">2</span>])</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">long</span> <span class="keyword">long</span> tmp[<span class="number">2</span>][<span class="number">2</span>];</div><div class="line">    <span class="built_in">memset</span>(tmp,<span class="number">0</span>,<span class="keyword">sizeof</span>(tmp));</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">2</span>;i++)</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;<span class="number">2</span>;k++)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span>(a[i][k]==<span class="number">0</span>) <span class="keyword">continue</span>;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="number">2</span>;j++)</div><div class="line">            &#123;</div><div class="line">                tmp[i][j]=(tmp[i][j]+(a[i][k]*b[k][j])%M)%M;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">2</span>;i++)</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="number">2</span>;j++)</div><div class="line">        &#123;</div><div class="line">            c[i][j]=tmp[i][j]%M;</div><div class="line">        &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">fast3</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> n,<span class="keyword">long</span> <span class="keyword">long</span> <span class="built_in">map</span>[][<span class="number">3</span>],<span class="keyword">long</span> <span class="keyword">long</span> re[][<span class="number">3</span>])</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">while</span>(n)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span>(n&amp;<span class="number">1</span>)</div><div class="line">        &#123;</div><div class="line">            mul3(<span class="built_in">map</span>,re,re);</div><div class="line">        &#125;</div><div class="line">        n=n/<span class="number">2</span>;</div><div class="line">        mul3(<span class="built_in">map</span>,<span class="built_in">map</span>,<span class="built_in">map</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">fast2</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> n,<span class="keyword">long</span> <span class="keyword">long</span> <span class="built_in">map</span>[][<span class="number">2</span>],<span class="keyword">long</span> <span class="keyword">long</span> re[][<span class="number">2</span>])</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">while</span>(n)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span>(n&amp;<span class="number">1</span>)</div><div class="line">        &#123;</div><div class="line">            mul2(<span class="built_in">map</span>,re,re);</div><div class="line">        &#125;</div><div class="line">        n=n/<span class="number">2</span>;</div><div class="line">        mul2(<span class="built_in">map</span>,<span class="built_in">map</span>,<span class="built_in">map</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">getf2n</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> n)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">long</span> <span class="keyword">long</span> ma[<span class="number">3</span>][<span class="number">3</span>]=&#123;<span class="number">2</span>,<span class="number">1</span>,<span class="number">0</span>,</div><div class="line">                        <span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,</div><div class="line">                        <span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span></div><div class="line">                        &#125;;</div><div class="line">    <span class="keyword">long</span> <span class="keyword">long</span> re[<span class="number">3</span>][<span class="number">3</span>]=&#123;<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,</div><div class="line">                        <span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,</div><div class="line">                        <span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span></div><div class="line">                        &#125;;</div><div class="line">    fast3(n<span class="number">-1</span>,ma,re);</div><div class="line">    <span class="keyword">return</span> (re[<span class="number">0</span>][<span class="number">0</span>]*<span class="number">1</span>+re[<span class="number">0</span>][<span class="number">1</span>]*<span class="number">0</span>+re[<span class="number">0</span>][<span class="number">2</span>]*<span class="number">1</span>)%M;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">getsub</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> n)</span></span></div><div class="line">&#123;</div><div class="line">    n=n/<span class="number">2</span>;</div><div class="line">    <span class="keyword">long</span> <span class="keyword">long</span> ma[<span class="number">2</span>][<span class="number">2</span>]=&#123;<span class="number">1</span>,<span class="number">1</span>,</div><div class="line">                        <span class="number">0</span>,<span class="number">4</span></div><div class="line">                       &#125;;</div><div class="line">    <span class="keyword">long</span> <span class="keyword">long</span> re[<span class="number">2</span>][<span class="number">2</span>]=&#123;<span class="number">1</span>,<span class="number">0</span>,</div><div class="line">                        <span class="number">0</span>,<span class="number">1</span></div><div class="line">                       &#125;;</div><div class="line">    fast2(n,ma,re);</div><div class="line">    <span class="keyword">return</span> (re[<span class="number">0</span>][<span class="number">0</span>]*<span class="number">0</span>+re[<span class="number">0</span>][<span class="number">1</span>]*<span class="number">2</span>)%M;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</div><div class="line">    <span class="keyword">int</span> t;</div><div class="line">    <span class="built_in">cin</span>&gt;&gt;t;</div><div class="line">    <span class="keyword">while</span>(t--)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">long</span> <span class="keyword">long</span> n,m;</div><div class="line">        <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</div><div class="line">        <span class="keyword">if</span>(n==<span class="number">1</span>||m==<span class="number">1</span>)</div><div class="line">        &#123;</div><div class="line">            <span class="built_in">cout</span>&lt;&lt;<span class="number">1</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span></div><div class="line">        &#123;</div><div class="line">            <span class="keyword">long</span> <span class="keyword">long</span> matrix00=fastpow(<span class="number">2</span>,n);</div><div class="line">            matrix00=matrix00<span class="number">-1</span>;</div><div class="line">            <span class="keyword">long</span> <span class="keyword">long</span> f1n=<span class="number">1</span>;</div><div class="line">            <span class="keyword">long</span> <span class="keyword">long</span> f2n=getf2n(n);</div><div class="line">            <span class="comment">//cout&lt;&lt;f2n&lt;&lt;endl;</span></div><div class="line">            <span class="keyword">if</span>(n%<span class="number">2</span>)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">long</span> <span class="keyword">long</span> sub=-getsub(n);<span class="comment">//sub为负</span></div><div class="line">                <span class="keyword">long</span> <span class="keyword">long</span> ma[<span class="number">2</span>][<span class="number">2</span>]=&#123;matrix00,<span class="number">1</span>,</div><div class="line">                                    <span class="number">0</span>,<span class="number">1</span></div><div class="line">                                    &#125;;</div><div class="line">                <span class="keyword">long</span> <span class="keyword">long</span> re[<span class="number">2</span>][<span class="number">2</span>]=&#123;<span class="number">1</span>,<span class="number">0</span>,</div><div class="line">                                    <span class="number">0</span>,<span class="number">1</span></div><div class="line">                                   &#125;;</div><div class="line">                fast2(m<span class="number">-1</span>,ma,re);</div><div class="line">                <span class="keyword">long</span> <span class="keyword">long</span> ans=((re[<span class="number">0</span>][<span class="number">0</span>]*<span class="number">1</span>+re[<span class="number">0</span>][<span class="number">1</span>]*sub)%M+M)%M;</div><div class="line">                <span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span></div><div class="line">            &#123;</div><div class="line">                <span class="keyword">long</span> <span class="keyword">long</span> ans=fastpow(matrix00,m<span class="number">-2</span>);</div><div class="line">                ans=(ans*f2n)%M;</div><div class="line">                <span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
@@ -410,15 +410,47 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">一些感想</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">acm</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">队训day6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">线段树</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">一些感想</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">贪心</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">blog</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">环境配置</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">队训day9</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">背包dp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -450,38 +482,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">队训day9</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">背包dp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">队训day6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">线段树</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">blog</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">环境配置</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">辗转相除法</a>
               </li>
              
@@ -506,11 +506,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">区间dp</a>
+                <a href="javascript:void(0)" class="js-tag color4">bfs</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">bfs</a>
+                <a href="javascript:void(0)" class="js-tag color5">区间dp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -522,15 +522,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hash</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">最短路</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">树形dp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hash</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -554,6 +554,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">二分</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">ISAP</a>
               </li>
              
@@ -570,31 +574,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">中国剩余定理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">二分</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">队训day8-9</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">队训day2</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">双调欧几里德旅行商</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">离散化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">KM算法</a>
+                <a href="javascript:void(0)" class="js-tag color2">中国剩余定理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -607,6 +591,22 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">凸包</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">队训day2</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">双调欧几里德旅行商</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">KM算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">离散化</a>
               </li>
              
               <li class="article-tag-list-item">
